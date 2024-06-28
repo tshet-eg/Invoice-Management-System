@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\ITax.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\StoreDetails.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
