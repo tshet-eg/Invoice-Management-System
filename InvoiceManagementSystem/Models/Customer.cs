@@ -2,8 +2,8 @@
 {
     public class Customer : BaseEntity
     {
-        private int _customerID;
-        public int CustomerID
+        private string _customerID;
+        public string CustomerID
         {
             get
             {
@@ -11,7 +11,7 @@
             }
             set
             {
-                _customerID = CustomerId;
+                _customerID = "CUST"+CustomerId;
             }
         }
         public string CustomerName { get; set; }
