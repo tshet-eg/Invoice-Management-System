@@ -1,14 +1,11 @@
 ﻿using InvoiceManagementSystem.Models;
 using InvoiceManagementSystem.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Product
+    public class Product:BaseEntity
     {
         public void ProductSelection()
         {
@@ -32,8 +29,8 @@ namespace InvoiceManagementSystem.Controllers
                     {
                         case 1:
 
-                            ProductObject.ProductID = ID;
-                            ProductObject.ProductCategoryID = ID;
+                            ProductObject.ProductID = "Prod"+ProductId;
+                            ProductObject.ProductCategoryID =;
                             Console.WriteLine("Enter the product name");
                             ProductObject.ProductName=Console.ReadLine();
                             Console.WriteLine("Enter the product description");
