@@ -9,7 +9,7 @@ using InvoiceManagementSystem.Interfaces;
 
 namespace InvoiceManagementSystem.Repositories
 {
-    internal class Invoice : IInvoice
+    public class Invoice : IInvoice
     {
         public void CalculateTotal()
         {
