@@ -1,4 +1,5 @@
 ﻿using System;
+using InvoiceManagementSystem.Controllers;
 
 namespace InvoiceManagementSystem
 {
@@ -29,6 +30,9 @@ namespace InvoiceManagementSystem
                 DisplayOptions();
                 switch (choice)
                 {
+                    case 1: 
+
+                        break;
                 }
 
             } while (choice != 9);
