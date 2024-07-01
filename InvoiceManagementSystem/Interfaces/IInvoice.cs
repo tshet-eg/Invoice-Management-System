@@ -1,6 +1,6 @@
 ﻿namespace InvoiceManagementSystem.Interfaces
 {
-    internal interface IInvoice
+    public interface IInvoice
     {
         void CalculateTotal();
         void PrintInvoice();
