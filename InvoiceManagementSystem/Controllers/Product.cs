@@ -24,8 +24,8 @@ namespace InvoiceManagementSystem.Controllers
                 Console.Write("Select an option: ");
 
                 int option;
-                var ProductServiceObject = new Repositories.Product();
-                var ProductObject = new Models.Product();
+                var ProductRepoObject = new Repositories.Product();
+                var ProductObject = new Models.ProductsModel();
                 if (int.TryParse(Console.ReadLine(), out option))
                 {
                     switch (option)
@@ -38,11 +38,11 @@ namespace InvoiceManagementSystem.Controllers
                             Console.WriteLine("Enter the product description");
                             ProductObject.ProductDescription=Console.ReadLine();
                             Console.WriteLine("Enter the product price");
-                            ProductObject.Price=Convert.ToInt32(Console.ReadLine());
+                            ProductObject.ProductPrice = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Enter the product discount");
                             double discount=Convert.ToDouble(Console.ReadLine());
-                            ProductObject.Discount = discount / 100;
-                            var AddProduct = new Services.Product(ProductServiceObject);
+                            ProductObject.ProductDiscount = discount / 100;
+                            var AddProduct = new Services.Product(ProductRepoObject);
                             AddProduct.AddProductsService(ProductObject);
                             break;
                         /*case 2:
@@ -54,7 +54,7 @@ namespace InvoiceManagementSystem.Controllers
                             EditProduct.EditProductDetailsService();
                             break;*/
                         case 4:
-                            var DisplayProduct = new Services.Product(ProductServiceObject);
+                            var DisplayProduct = new Services.Product(ProductRepoObject);
                             DisplayProduct.DisplayProductsService();
                             break;
                         case 5:

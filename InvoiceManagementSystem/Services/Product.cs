@@ -13,7 +13,7 @@ namespace InvoiceManagementSystem.Services
             _product = ProductObject;
         }
        
-        public void AddProductsService(Models.Product product)
+        public void AddProductsService(Models.ProductsModel product)
         {
             _product.AddProducts(product);
         }

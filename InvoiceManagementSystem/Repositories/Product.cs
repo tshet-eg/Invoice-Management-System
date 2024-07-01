@@ -9,7 +9,7 @@ namespace InvoiceManagementSystem.Repositories
 {
     public class Product:IProduct
     {
-        public void AddProducts(Models.Product Product )
+        public void AddProducts(Models.ProductsModel Product )
         {
             DBEntity.ProductList.Add(Product);
 
@@ -33,8 +33,8 @@ namespace InvoiceManagementSystem.Repositories
                 Console.WriteLine($"ProductID: {Product.ProductID}");
                 Console.WriteLine($"Product Name: {Product.ProductName}");
                 Console.WriteLine($"Product Description: {Product.ProductDescription}");
-                Console.WriteLine($"Product Price: {Product.Price}");
-                Console.WriteLine($"Product Discount: {Product.Discount} ");
+                Console.WriteLine($"Product Price: {Product.ProductPrice}");
+                Console.WriteLine($"Product Discount: {Product.ProductDiscount} ");
                 //Console.WriteLine($"Product CategoryID: {Product.ProductCategoryID}");
 
             }

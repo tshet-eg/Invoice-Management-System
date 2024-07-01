@@ -6,7 +6,7 @@ namespace InvoiceManagementSystem.Interfaces
     public interface IProduct
     {
         void EditProductDetails();
-        void AddProducts(Models.Product Product);
+        void AddProducts(Models.ProductsModel Product);
         void DeleteProducts();
         void DisplayProducts();
         
