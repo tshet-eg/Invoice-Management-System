@@ -1,15 +1,21 @@
 ﻿using InvoiceManagementSystem.Interfaces;
+using InvoiceManagementSystem.Models;
+using InvoiceManagementSystem.Repositories;
 namespace InvoiceManagementSystem.Services
 {
+
+
     public class Product
     {
         private readonly IProduct _product;
-        public Product(IProduct ProductObject) { 
+        public Product(Repositories.Product ProductObject)
+        {
             _product = ProductObject;
         }
-        public void AddProductsService()
+       
+        public void AddProductsService(Models.Product product)
         {
-            _product.AddProducts(_product);
+            _product.AddProducts(product);
         }
         public void DeleteProductsService()
         {
@@ -17,7 +23,7 @@ namespace InvoiceManagementSystem.Services
         }
         public void EditProductDetailsService()
         {
-            _product.EditProductDetails
+            _product.EditProductDetails();
         }
         public void DisplayProductsService()
         {

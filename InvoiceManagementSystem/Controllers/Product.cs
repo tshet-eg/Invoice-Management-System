@@ -1,5 +1,7 @@
 ﻿using InvoiceManagementSystem.Models;
 using InvoiceManagementSystem.Services;
+using InvoiceManagementSystem.Interfaces;
+using InvoiceManagementSystem.Repositories;
 using System;
 
 
@@ -7,7 +9,7 @@ namespace InvoiceManagementSystem.Controllers
 {
     public class Product:BaseEntity
     {
-        public void ProductSelection()
+        public static void ProductSelection()
         {
             bool exit = false;
 
@@ -22,15 +24,15 @@ namespace InvoiceManagementSystem.Controllers
                 Console.Write("Select an option: ");
 
                 int option;
+                var ProductServiceObject = new Repositories.Product();
                 var ProductObject = new Models.Product();
                 if (int.TryParse(Console.ReadLine(), out option))
                 {
                     switch (option)
                     {
                         case 1:
-
-                            ProductObject.ProductID = "Prod"+ProductId;
-                            ProductObject.ProductCategoryID =;
+                          
+                        
                             Console.WriteLine("Enter the product name");
                             ProductObject.ProductName=Console.ReadLine();
                             Console.WriteLine("Enter the product description");
@@ -38,22 +40,21 @@ namespace InvoiceManagementSystem.Controllers
                             Console.WriteLine("Enter the product price");
                             ProductObject.Price=Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Enter the product discount");
-                            int discount=Convert.ToInt32(Console.ReadLine());
+                            double discount=Convert.ToDouble(Console.ReadLine());
                             ProductObject.Discount = discount / 100;
-
-                            var AddProduct = new Services.Product(ProductObject);
-                            AddProduct.AddProductsService();
+                            var AddProduct = new Services.Product(ProductServiceObject);
+                            AddProduct.AddProductsService(ProductObject);
                             break;
-                        case 2:
-                            var DeleteProduct = new Services.Product(ProductObject);
+                        /*case 2:
+                            var DeleteProduct = new Services.Product((Interfaces.IProduct)ProductObject);
                             DeleteProduct.DeleteProductsService();
                             break;
                         case 3:
-                            var EditProduct = new Services.Product(ProductObject);
+                            var EditProduct = new Services.Product((Interfaces.IProduct)ProductObject);
                             EditProduct.EditProductDetailsService();
-                            break;
+                            break;*/
                         case 4:
-                            var DisplayProduct = new Services.Product(ProductObject);
+                            var DisplayProduct = new Services.Product(ProductServiceObject);
                             DisplayProduct.DisplayProductsService();
                             break;
                         case 5:
