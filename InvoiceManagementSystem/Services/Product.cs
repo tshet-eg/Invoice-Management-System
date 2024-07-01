@@ -21,9 +21,9 @@ namespace InvoiceManagementSystem.Services
         {
             _product.DeleteProducts(productId);
         }
-        public void EditProductDetailsService()
+        public void EditProductDetailsService(Models.ProductsModel product)
         {
-            _product.EditProductDetails();
+            _product.EditProductDetails(product);
         }
         public void DisplayProductsService()
         {

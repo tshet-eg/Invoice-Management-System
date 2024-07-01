@@ -32,9 +32,9 @@ namespace InvoiceManagementSystem.Repositories
             }
 
         }
-        public void EditProductDetails()
+        public void EditProductDetails(Models.ProductsModel Product)
         {
-
+            DBEntity.ProductList.Add(Product);
         }
 
  

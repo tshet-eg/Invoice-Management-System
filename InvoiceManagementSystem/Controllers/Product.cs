@@ -41,11 +41,22 @@ namespace InvoiceManagementSystem.Controllers
                             ProductObject.ProductDescription=Console.ReadLine();
                             Console.WriteLine("Enter the product price");
                             ProductObject.ProductPrice = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Enter the product discount");
+                            Console.WriteLine("Enter the Tax for the Product");
+                            ProductObject.ProductTax = float.Parse(Console.ReadLine());
+                            Console.WriteLine("Enter the Product discount");
                             double discount=Convert.ToDouble(Console.ReadLine());
                             ProductObject.ProductDiscount = discount / 100;
+                            Console.WriteLine("Enter the Category ID");
+                            string productiD=Console.ReadLine();
+                            ProductObject.CategoryID = Console.ReadLine();
+                            /*if (CheckAvailablity(productiD))
+                            {
+                                
+                            }*/
+                            ProductObject.CategoryID = productiD;
                             var AddProduct = new Services.Product(ProductRepoObject);
                             AddProduct.AddProductsService(ProductObject);
+
                             break;
                         case 2:
                             Console.WriteLine("Enter the product ID to delete");
@@ -64,10 +75,78 @@ namespace InvoiceManagementSystem.Controllers
                             
 
                             break;
-                        /*case 3:
-                            var EditProduct = new Services.Product((Interfaces.IProduct)ProductObject);
-                            EditProduct.EditProductDetailsService();
-                            break;*/
+                        case 3:
+                            Console.Write("Enter the Product ID to update: ");
+                            string productId = Console.ReadLine();
+
+                            foreach (var Product in DBEntity.ProductList)
+                            {
+                                if (Product.ProductID == productId)
+                                {
+                                    Console.WriteLine("\nCategory ID: " + Product.ProductID);
+                                    Console.WriteLine("Name: " + Product.ProductName);
+                                    Console.WriteLine("Description: " + Product.ProductDescription);
+                                    Console.WriteLine("Price: "+Product.ProductPrice);
+                                    Console.WriteLine("Discount: " + Product.ProductDiscount);
+                                    Console.WriteLine("Tax" + Product.ProductTax);
+                                    Console.WriteLine("Category ID: "+Product.CategoryID);
+
+                                    Console.WriteLine("\nSelect field to update: \n1. Name\n2. Description\n3. Price\n4. Discount\n5. Tax\n6. Exit");
+                                    Console.Write("\nEnter your choice: ");
+                                    int editChoice = Convert.ToInt32(Console.ReadLine());
+                                    Console.WriteLine("\n");
+                                    switch (editChoice)
+                                    {
+                                        case 1:
+                                            Console.Write("Enter new Product name: ");
+                                            Product.ProductName = Console.ReadLine();
+                                            var EditProductName = new Services.Product(ProductRepoObject);
+                                            EditProductName.EditProductDetailsService(Product);
+                                            Console.Write("\nProduct name updated successfully!!");
+                                            break;
+                                        case 2:
+                                            Console.Write("Enter new Product description: ");
+                                            Product.ProductDescription = Console.ReadLine();
+                                            var EditProductDescription = new Services.Product(ProductRepoObject);
+                                            EditProductDescription.EditProductDetailsService(Product);
+                                            Console.Write("\nProduct description updated successfully!!");
+                                            break;
+                                        case 3:
+                                            Console.Write("Enter new Product price: ");
+                                            Product.ProductPrice = Convert.ToInt16(Console.ReadLine());
+                                            var EditProductPrice = new Services.Product(ProductRepoObject);
+                                            EditProductPrice.EditProductDetailsService(Product);
+                                            Console.Write("\nProduct tax updated successfully!!");
+                                            break;
+                                        case 4:
+                                            Console.Write("Enter new Product Discount: ");
+                                            Product.ProductName = Console.ReadLine();
+                                            var EditProductDiscount = new Services.Product(ProductRepoObject);
+                                            EditProductDiscount.EditProductDetailsService(Product);
+                                            Console.Write("\nProduct tax updated successfully!!");
+                                            break;
+                                        case 5:
+                                            Console.Write("Enter new Product Tax: ");
+                                            Product.ProductTax =  float.Parse(Console.ReadLine());
+                                            var EditProductTax = new Services.Product(ProductRepoObject);
+                                            EditProductTax.EditProductDetailsService(Product);
+                                            Console.Write("\nProduct tax updated successfully!!");
+                                            break;
+                                            case 6:
+                                            break;
+                                        default:
+                                            Console.WriteLine("Invalid choice!!");
+                                            break;
+                                    }
+                                    break;
+                                }
+
+                            }
+                           
+
+
+
+                            break;
                         case 4:
                             var DisplayProduct = new Services.Product(ProductRepoObject);
                             DisplayProduct.DisplayProductsService();

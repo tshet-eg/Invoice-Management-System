@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using InvoiceManagementSystem;
+﻿
 using InvoiceManagementSystem.Database;
 
 namespace InvoiceManagementSystem.Validations
@@ -9,20 +7,15 @@ namespace InvoiceManagementSystem.Validations
     {
         public static bool ProductIdValidation(string productID)
         {
-            bool result = false;
             foreach (var item in DBEntity.ProductList)
             {
-                Console.WriteLine(item.ProductID);
+
                 if (item.ProductID == productID)
                 {
-                    result=true;
-                }
-                else
-                {
-                    result=false;
+                    return true;
                 }
             }
-            return result;
+            return false;
             
         }
     }
