@@ -5,6 +5,7 @@ using InvoiceManagementSystem.Interfaces;
 using InvoiceManagementSystem.Models;
 using InvoiceManagementSystem.Database;
 
+
 namespace InvoiceManagementSystem.Repositories
 {
     public class Product:IProduct
@@ -16,8 +17,19 @@ namespace InvoiceManagementSystem.Repositories
 
         }
 
-        public void DeleteProducts()
+        public void DeleteProducts(string productId)
         {
+            
+            foreach (var Product in DBEntity.ProductList)
+            {
+                if (Product.ProductID==productId)
+                {
+                    DBEntity.ProductList.Remove(Product);
+                    Console.WriteLine("Deleted successfully");
+                    break;
+                }
+               
+            }
 
         }
         public void EditProductDetails()

@@ -3,6 +3,8 @@ using InvoiceManagementSystem.Services;
 using InvoiceManagementSystem.Interfaces;
 using InvoiceManagementSystem.Repositories;
 using System;
+using InvoiceManagementSystem.Database;
+using InvoiceManagementSystem.Validations;
 
 
 namespace InvoiceManagementSystem.Controllers
@@ -45,11 +47,24 @@ namespace InvoiceManagementSystem.Controllers
                             var AddProduct = new Services.Product(ProductRepoObject);
                             AddProduct.AddProductsService(ProductObject);
                             break;
-                        /*case 2:
-                            var DeleteProduct = new Services.Product((Interfaces.IProduct)ProductObject);
-                            DeleteProduct.DeleteProductsService();
+                        case 2:
+                            Console.WriteLine("Enter the product ID to delete");
+                            string productID = Console.ReadLine();
+                            if (ProductValidation.ProductIdValidation(productID))
+                            {
+                                var DeleteProduct = new Services.Product(ProductRepoObject);
+                                DeleteProduct.DeleteProductsService(productID);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Entered ProductID is not valid");
+                            }
+                            
+                           
+                            
+
                             break;
-                        case 3:
+                        /*case 3:
                             var EditProduct = new Services.Product((Interfaces.IProduct)ProductObject);
                             EditProduct.EditProductDetailsService();
                             break;*/

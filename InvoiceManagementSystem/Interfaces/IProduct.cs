@@ -7,7 +7,7 @@ namespace InvoiceManagementSystem.Interfaces
     {
         void EditProductDetails();
         void AddProducts(Models.ProductsModel Product);
-        void DeleteProducts();
+        void DeleteProducts(string productId);
         void DisplayProducts();
         
     }

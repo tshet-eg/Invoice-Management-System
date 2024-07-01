@@ -64,6 +64,7 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Validations\Customer.cs" />
     <Compile Include="Services\Product.cs" />
+    <Compile Include="Validations\Product.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
