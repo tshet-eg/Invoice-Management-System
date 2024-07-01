@@ -1,4 +1,5 @@
-﻿namespace InvoiceManagementSystem.Models
+﻿using InvoiceManagementSystem.Models;
+namespace InvoiceManagementSystem.Models
 {
     public class ProductsModel:BaseEntity
     {
@@ -7,6 +8,7 @@
         public string ProductDescription;
         public int ProductPrice;
         public double ProductDiscount;
-        public Category ProductCategoryID;
+        public string CategoryID;
+        public float ProductTax;
     }
 }
