@@ -1,11 +1,14 @@
-﻿namespace InvoiceManagementSystem.Interfaces
+﻿using InvoiceManagementSystem.Models;
+
+
+namespace InvoiceManagementSystem.Interfaces
 {
-    internal interface IProduct
+    public interface IProduct
     {
         void EditProductDetails();
-        void AddProducts();
-        void DeleteProducts();
+        void AddProducts(Models.ProductsModel Product);
+        void DeleteProducts(string productId);
         void DisplayProducts();
-
+        
     }
 }
