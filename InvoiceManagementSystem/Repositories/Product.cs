@@ -47,7 +47,8 @@ namespace InvoiceManagementSystem.Repositories
                 Console.WriteLine($"Product Description: {Product.ProductDescription}");
                 Console.WriteLine($"Product Price: {Product.ProductPrice}");
                 Console.WriteLine($"Product Discount: {Product.ProductDiscount} ");
-                //Console.WriteLine($"Product CategoryID: {Product.ProductCategoryID}");
+                Console.WriteLine($"Product Tax:{ Product.ProductTax}");
+                Console.WriteLine($"Product CategoryID: {Product.CategoryID}");
 
             }
         }
