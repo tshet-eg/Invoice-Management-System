@@ -24,14 +24,15 @@ namespace InvoiceManagementSystem
         }
         static void Main(string[] args)
         {
-            do
-            {
-                DisplayOptions();
-                switch (choice)
-                {
-                }
+            //do
+            //{
+            //    DisplayOptions();
+            //    switch (choice)
+            //    {
+            //    }
 
-            } while (choice != 9);
+            //} while (choice != 9);
+            Controllers.Cart.CartOperations();
         }
     }
 }
