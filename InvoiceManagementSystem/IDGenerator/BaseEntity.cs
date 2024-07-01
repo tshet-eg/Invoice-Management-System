@@ -4,10 +4,10 @@ namespace InvoiceManagementSystem
 {
     public abstract class BaseEntity
     {
-        private int _customerId=0;
-        private int _categoryId=0;
-        private int _productId=0;
-        private int _cartId=0;
+        private static int _customerId=0;
+        private static int _categoryId=0;
+        private static int _productId=0;
+        private static int _cartId=0;
         private string _uniqueId;
 
         protected int CustomerId {
