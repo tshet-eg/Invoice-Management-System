@@ -6,7 +6,7 @@ namespace InvoiceManagementSystem.Controllers
 {
     public class Cart
     {
-        public static void CartOperations()
+        public void CartOperations()
         {
             int choice;
             int quantity;
@@ -15,13 +15,15 @@ namespace InvoiceManagementSystem.Controllers
             do
             {
                 //showing the menu
+                Console.WriteLine("\n----------------CART MENU----------------");
                 Console.WriteLine("1. Add items to Cart");
                 Console.WriteLine("2. Display all items in the cart");
                 Console.WriteLine("3. Display all cart items a customer");
                 Console.WriteLine("4. Delete all cart items of a customer");
                 Console.WriteLine("5. Delete a single cart item");
                 Console.WriteLine("6. Edit a cart item");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("7. BACK");
+                Console.Write("Enter your choice: ");
                 choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
@@ -29,7 +31,12 @@ namespace InvoiceManagementSystem.Controllers
                     case 1:
                         Console.Write("Enter customerId: ");
                         customerId = Console.ReadLine();
-                        Console.Write("Enter productId: ");
+                        if (!Validations.Customer.CheckCustomer(customerId))
+                        {
+                            DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
+                            break;
+                        }
+                        Console.Write("Enter product Id: ");
                         productId = Console.ReadLine();
                         if (!ProductValidation.ProductIdValidation(productId))
                         {
@@ -59,14 +66,24 @@ namespace InvoiceManagementSystem.Controllers
                         Console.WriteLine();
                         break;
                     case 3:
-                        Console.Write("Enter customerId: ");
+                        Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
+                        if (!Validations.Customer.CheckCustomer(customerId))
+                        {
+                            DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
+                            break;
+                        }
                         List<Models.Cart> customerCartItems = cart.DisplayCartItemsOfUser(customerId); //retrieving all the cart items of customer
                         DisplayCartItems(customerCartItems);
                         break;
                     case 4:
-                        Console.Write("Enter customerId: ");
+                        Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
+                        if (!Validations.Customer.CheckCustomer(customerId))
+                        {
+                            DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
+                            break;
+                        }
 
                         if (cart.DisplayCartItemsOfUser(customerId).Count == 0)
                         {
