@@ -2,12 +2,21 @@
 
 namespace InvoiceManagementSystem.Interfaces
 {
-    public interface ICart
+    //methods of entire cart
+    public interface ICartOperations
     {
-        void AddtoCart(string customerId,string productId,int quantity);
-        void ClearCartItemsOfUser(string customerId);
-
-        List<Models.Cart> DisplayCartItemsOfUser(string customerId);
         List<Models.Cart> DisplayAllCartItems();
+    }
+
+
+
+    //methods of individual customer
+    public interface ICart : ICartOperations
+    {
+        void AddtoCart(string customerId, string productId, int quantity);
+        void EditCartItem(string cartId, int newQuantity);
+        void DeleteCartItem(string cartId);
+        void ClearCartItemsOfUser(string customerId);
+        List<Models.Cart> DisplayCartItemsOfUser(string customerId);
     }
 }
