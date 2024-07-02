@@ -32,7 +32,7 @@ namespace InvoiceManagementSystem
                         break;
                     case 2:
                         Category categoryController = new Category();
-                        categoryController.CustomerController();
+                        categoryController.CategoryController();
                         break;
                     case 3:Controllers.Product product = new Controllers.Product();
                         product.ProductSelection();

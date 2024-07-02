@@ -6,7 +6,7 @@ namespace InvoiceManagementSystem.Controllers
 {
     public class Category
     {
-        public void CustomerController()
+        public void CategoryController()
         {
             try
             {
