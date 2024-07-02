@@ -2,16 +2,16 @@
 {
     public class Category : BaseEntity
     {
-        private int _categoryID;
+        private string _categoryID;
         
-        public int CategoryID{ 
+        public string CategoryID{ 
             get
             { 
                 return _categoryID;
             } 
             set 
             {
-                _categoryID = CategoryId;
+                _categoryID = "Cat" + CategoryId;
             }
         }
 
