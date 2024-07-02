@@ -6,7 +6,7 @@ namespace InvoiceManagementSystem.Repositories
     public class Cart : ICart
     {
         //method to add items to cart
-        public string AddtoCart(string customerId, string productId, int quantity)
+        public void AddtoCart(string customerId, string productId, int quantity)
         {
             //if the product is already in the cart than incrementing the quantity value
             foreach (Models.Cart cartItem in DBEntity.Cart)
@@ -14,7 +14,7 @@ namespace InvoiceManagementSystem.Repositories
                 if (cartItem.Product.ProductID == productId && cartItem.CustomerID == customerId)
                 {
                     cartItem.Quantity = cartItem.Quantity + quantity;
-                    return cartItem.CartID;
+                    return;
                 }
             }
             //retrieving the product object and creating the cart object
@@ -24,10 +24,8 @@ namespace InvoiceManagementSystem.Repositories
                 {
                     Models.Cart newCartItem = new Models.Cart(customerId, product, quantity);
                     DBEntity.Cart.Add(newCartItem);
-                    return newCartItem.CartID;
                 }
             }
-            return null;
         }
 
         //deleting the all the cart items of user
