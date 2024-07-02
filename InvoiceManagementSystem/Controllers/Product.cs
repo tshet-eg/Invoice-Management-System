@@ -12,7 +12,7 @@ namespace InvoiceManagementSystem.Controllers
 {
     public class Product:BaseEntity
     {
-        public static void ProductSelection()
+        public void ProductSelection()
         {
             bool exit = false;
 
@@ -28,7 +28,7 @@ namespace InvoiceManagementSystem.Controllers
 
                 int option;
                 var ProductRepoObject = new Repositories.Product();
-                var ProductObject = new Models.ProductsModel();
+                var ProductObject = new Models.Product();
                 try
                 {
 
@@ -160,7 +160,12 @@ namespace InvoiceManagementSystem.Controllers
                                 break;
                             case 4:
                                 var DisplayProduct = new Services.Product(ProductRepoObject);
-                                List<ProductsModel> result= DisplayProduct.DisplayProductsService();
+                                List<Models.Product> result = DisplayProduct.DisplayProductsService();
+                                if(result.Count == 0)
+                                {
+                                    Console.WriteLine("Product List is Empty");
+                                    break;
+                                }
                                 foreach (var Product in result)
                                 {
                                     Console.WriteLine($"ProductID: {Product.ProductID}");
@@ -175,7 +180,7 @@ namespace InvoiceManagementSystem.Controllers
                                 break;
                             case 5:
                                 exit = true;
-                                Console.WriteLine("Exiting program...");
+                               
                                 break;
                             default:
                                 Console.WriteLine("Invalid option. Please try again.");

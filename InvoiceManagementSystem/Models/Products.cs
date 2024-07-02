@@ -1,7 +1,7 @@
 ﻿using InvoiceManagementSystem.Models;
 namespace InvoiceManagementSystem.Models
 {
-    public class ProductsModel:BaseEntity
+    public class Product:BaseEntity
     {
 
         public string ProductID;
@@ -11,7 +11,7 @@ namespace InvoiceManagementSystem.Models
         public double ProductDiscount;
         public string CategoryID;
         public float ProductTax;
-        public ProductsModel(string productName, string productDescription, int productPrice, double productDiscount, float productTax, string categoryID) {
+        public Product(string productName, string productDescription, int productPrice, double productDiscount, float productTax, string categoryID) {
             ProductID = "PROD" + ProductId;
             ProductName = productName;
             ProductDescription = productDescription;
@@ -22,6 +22,6 @@ namespace InvoiceManagementSystem.Models
 
 
         }
-        public ProductsModel() { }
+        public Product() { }
     }
 }

@@ -18,7 +18,7 @@ namespace InvoiceManagementSystem.Repositories
                 }
             }
             //retrieving the product object and creating the cart object
-            foreach (Models.ProductsModel product in DBEntity.ProductList)
+            foreach (Models.Product product in DBEntity.ProductList)
             {
                 if (product.ProductID == productId)
                 {

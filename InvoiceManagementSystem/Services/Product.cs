@@ -21,11 +21,11 @@ namespace InvoiceManagementSystem.Services
         {
             _product.DeleteProducts(productId);
         }
-        public void EditProductDetailsService(Models.ProductsModel Product,string productName,string productDescription,int productPrice,double productDiscount,float productTax   )
+        public void EditProductDetailsService(Models.Product Product,string productName,string productDescription,int productPrice,double productDiscount,float productTax   )
         {
             _product.EditProductDetails(Product,productName, productDescription, productPrice, productDiscount, productTax);
         }
-        public List<ProductsModel> DisplayProductsService()
+        public List<Models.Product> DisplayProductsService()
         {
             return _product.DisplayProducts();
         }
