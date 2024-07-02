@@ -1,8 +1,5 @@
-﻿using InvoiceManagementSystem.Services;
-using InvoiceManagementSystem.Models;
+﻿using InvoiceManagementSystem.Interfaces;
 using System;
-using InvoiceManagementSystem.Interfaces;
-using InvoiceManagementSystem.Database;
 
 namespace InvoiceManagementSystem.Controllers
 {
@@ -13,14 +10,14 @@ namespace InvoiceManagementSystem.Controllers
         {
             string customerId;
             ICustomer customerRepository = new Repositories.Customer();
-            Services.Customer customer=new Services.Customer(customerRepository);
+            Services.Customer customer = new Services.Customer(customerRepository);
             do
             {
                 Console.WriteLine("\n----------------MENU----------------");
                 Console.WriteLine(" 1. Add Customer \n 2. Edit customer details\n 3. View customer details\n 4. Delete customer\n 5. Exit");
                 Console.WriteLine("------------------------------------");
                 Console.Write("Enter you choice: ");
-                choice=int.Parse(Console.ReadLine());
+                choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
@@ -38,9 +35,9 @@ namespace InvoiceManagementSystem.Controllers
                             customerId = customer.CreateCustomer(customerType);
                             Console.WriteLine($"\nAccount created successfully!!\nYour account ID is: {customerId}");
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
-                            Console.ForegroundColor= ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine(e.Message);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
@@ -53,7 +50,7 @@ namespace InvoiceManagementSystem.Controllers
                             Models.Customer customerEntry = customer.GetCustomer(customerId);
                             if (customerEntry == null)
                             {
-                                Console.ForegroundColor=ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Customer ID is invalid");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 break;
@@ -105,13 +102,13 @@ namespace InvoiceManagementSystem.Controllers
                                         default:
                                             Console.ForegroundColor = ConsoleColor.Red;
                                             Console.WriteLine("Enter correct option!!");
-                                            Console.ForegroundColor= ConsoleColor.White;
+                                            Console.ForegroundColor = ConsoleColor.White;
                                             break;
                                     }
                                 } while (option != 5);
                             }
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine(e.Message);
@@ -126,7 +123,7 @@ namespace InvoiceManagementSystem.Controllers
                             Models.Customer displayCustomer = customer.GetCustomer(customerId);
                             if (displayCustomer == null)
                             {
-                                Console.ForegroundColor= ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("\nCustomer ID not found!!");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 break;
@@ -147,7 +144,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 4:
                         Console.Write("Enter unique customer ID: ");
                         customerId = Console.ReadLine();
-                        bool isPresent= customer.DeleteCustomer(customerId);
+                        bool isPresent = customer.DeleteCustomer(customerId);
                         if (!isPresent)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -159,7 +156,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 5:
                         break;
                     default:
-                        Console.ForegroundColor=ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter correct option\n");
                         Console.ForegroundColor = ConsoleColor.White;
                         break;

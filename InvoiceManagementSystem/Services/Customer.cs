@@ -1,8 +1,4 @@
-﻿using System;
-using InvoiceManagementSystem.Interfaces;
-using InvoiceManagementSystem.Models;
-using InvoiceManagementSystem.Database;
-using InvoiceManagementSystem.Controllers;
+﻿using InvoiceManagementSystem.Interfaces;
 
 namespace InvoiceManagementSystem.Services
 {

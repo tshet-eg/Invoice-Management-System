@@ -7,16 +7,10 @@ namespace InvoiceManagementSystem.Validations
     {
         public static  bool CheckCustomer(string CustomerID)
         {
-            bool isPresent = false;
             foreach (Models.Customer customerEntry in DBEntity.CustomerList)
-            {
                 if (CustomerID == customerEntry.CustomerID)
-                {
-                    isPresent = true;
-                    break;
-                }
-            }
-            return isPresent;
+               return true;
+            return false;
         }
         public static bool ValidateEmail(string email) {
             return Regex.IsMatch(email, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");

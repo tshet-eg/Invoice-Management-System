@@ -1,6 +1,5 @@
 ﻿using InvoiceManagementSystem.Database;
 using InvoiceManagementSystem.Interfaces;
-using System;
 
 namespace InvoiceManagementSystem.Repositories
 {
@@ -13,7 +12,7 @@ namespace InvoiceManagementSystem.Repositories
         }
         public void EditCustomerDetails(string CustomerID, string name, long phone, string email, string address)
         {
-            foreach(Models.Customer customerEntry in DBEntity.CustomerList)
+            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
             {
                 if (customerEntry.CustomerID == CustomerID)
                 {
@@ -25,11 +24,11 @@ namespace InvoiceManagementSystem.Repositories
                 }
             }
         }
-        public void DeleteCustomer(string CustomerID) 
+        public void DeleteCustomer(string CustomerID)
         {
             foreach (Models.Customer customerEntry in DBEntity.CustomerList)
             {
-                if (customerEntry.CustomerID==CustomerID)
+                if (customerEntry.CustomerID == CustomerID)
                 {
                     DBEntity.CustomerList.Remove(customerEntry);
                     break;
