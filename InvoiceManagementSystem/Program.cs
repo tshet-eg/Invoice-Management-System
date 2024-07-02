@@ -29,12 +29,6 @@ namespace InvoiceManagementSystem
                 DisplayOptions();
                 switch (choice)
                 {
-                    case 1:
-                            Controllers.Cart.CartOperations();
-                        break;
-                    case 2:
-                        Controllers.Product.ProductSelection();
-                        break;
                 }
 
             } while (choice != 9);
