@@ -1,6 +1,6 @@
 ﻿using InvoiceManagementSystem.Interfaces;
 using InvoiceManagementSystem.Models;
-using InvoiceManagementSystem.Repositories;
+using System.Collections.Generic;
 namespace InvoiceManagementSystem.Services
 {
 
@@ -13,21 +13,21 @@ namespace InvoiceManagementSystem.Services
             _product = ProductObject;
         }
        
-        public void AddProductsService(Models.ProductsModel product)
+        public void AddProductsService(string productName, string productDescription, int productPrice, double productDiscount, float productTax, string categoryID)
         {
-            _product.AddProducts(product);
+            _product.AddProducts(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
         }
         public void DeleteProductsService(string productId)
         {
             _product.DeleteProducts(productId);
         }
-        public void EditProductDetailsService()
+        public void EditProductDetailsService(Models.ProductsModel Product,string productName,string productDescription,int productPrice,double productDiscount,float productTax   )
         {
-            _product.EditProductDetails();
+            _product.EditProductDetails(Product,productName, productDescription, productPrice, productDiscount, productTax);
         }
-        public void DisplayProductsService()
+        public List<ProductsModel> DisplayProductsService()
         {
-            _product.DisplayProducts();
+            return _product.DisplayProducts();
         }
     }
 }
