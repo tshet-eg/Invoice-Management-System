@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\Invoice.cs" />
     <Compile Include="Database\DBEntity.cs" />
     <Compile Include="IDGenerator\BaseEntity.cs" />
     <Compile Include="Interfaces\ICategory.cs" />

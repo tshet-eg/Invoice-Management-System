@@ -30,7 +30,8 @@ namespace InvoiceManagementSystem
                 DisplayOptions();
                 switch (choice)
                 {
-                    case 1: 
+                    case 5: Repositories.Invoice invoice = new Repositories.Invoice();
+                            invoice.PrintInvoice();
 
                         break;
                 }

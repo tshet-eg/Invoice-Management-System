@@ -2,7 +2,7 @@
 {
     internal interface IDiscount
     {
-        void ApplyDiscount();
+        float ApplyDiscount(float ammount,float discountRate,int quantity, bool isSubtotal);
 
     }
 }

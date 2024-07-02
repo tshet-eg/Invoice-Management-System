@@ -2,7 +2,7 @@
 {
     public interface IInvoice
     {
-        void CalculateTotal();
+        float CalculateTotal(float subtotal);
         void PrintInvoice();
 
     }
