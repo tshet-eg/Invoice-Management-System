@@ -29,6 +29,10 @@ namespace InvoiceManagementSystem
                         Controllers.Customer customer = new Controllers.Customer();
                         customer.CustomerController();
                         break;
+                    case 2:
+                        Controllers.Category categoryController = new Controllers.Category();
+                        categoryController.CustomerController();
+                        break;
                     case 6:
                         break;
                     default:

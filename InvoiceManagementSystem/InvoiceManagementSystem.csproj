@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Customer.cs" />
     <Compile Include="Controllers\Cart.cs" />
+    <Compile Include="Controllers\Category.cs" />
     <Compile Include="Controllers\DisplayMessage.cs" />
     <Compile Include="Database\DBEntity.cs" />
     <Compile Include="Controllers\Product.cs" />
@@ -65,10 +66,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Cart.cs" />
     <Compile Include="Repositories\Customer.cs" />
+    <Compile Include="Repositories\Category.cs" />
     <Compile Include="Services\Cart.cs" />
     <Compile Include="Repositories\Product.cs" />
     <Compile Include="Services\Customer.cs" />
+    <Compile Include="Services\Category.cs" />
     <Compile Include="Validations\Cart.cs" />
+    <Compile Include="Validations\Category.cs" />
     <Compile Include="Validations\Customer.cs" />
     <Compile Include="Services\Product.cs" />
     <Compile Include="Validations\Product.cs" />
