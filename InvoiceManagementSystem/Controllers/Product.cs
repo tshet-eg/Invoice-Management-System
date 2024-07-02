@@ -6,6 +6,8 @@ using InvoiceManagementSystem.Models;
 using InvoiceManagementSystem.Validations;
 
 
+
+
 namespace InvoiceManagementSystem.Controllers
 {
     public class Product:BaseEntity
@@ -52,13 +54,19 @@ namespace InvoiceManagementSystem.Controllers
                                 Console.WriteLine("Enter the Category ID");
                                 string productCategoryiD = Console.ReadLine();
 
-                                /*if (CheckAvailablity(productiD))
+                                if (Validations.Category.CheckAvailability(productCategoryiD))
                                 {
-
-                                }*/
+                                    var AddProduct = new Services.Product(ProductRepoObject);
+                                    AddProduct.AddProductsService(ProductName, ProductDescription, ProductPrice, ProductDiscount, ProductTax, productCategoryiD);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Category ID is not valid");
+                                    break;
+                                }
+                                  
                                 
-                                var AddProduct = new Services.Product(ProductRepoObject);
-                                AddProduct.AddProductsService(ProductName,ProductDescription, ProductPrice, ProductDiscount, ProductTax,productCategoryiD);
+                                
 
                                 break;
                             case 2:
@@ -178,8 +186,8 @@ namespace InvoiceManagementSystem.Controllers
                     {
                         Console.WriteLine("Invalid option. Please enter a number.");
                     }
-                }catch { 
-                    Console.WriteLine("Input should be a number"); 
+                }catch {
+                    DisplayMessage.DisplayErrorMessage("Input should be a number");
                 }
 
                
