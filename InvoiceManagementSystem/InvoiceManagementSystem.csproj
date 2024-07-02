@@ -65,11 +65,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Cart.cs" />
-    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\Category.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Services\Cart.cs" />
     <Compile Include="Repositories\Product.cs" />
-    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\Category.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Validations\Cart.cs" />
     <Compile Include="Validations\Category.cs" />

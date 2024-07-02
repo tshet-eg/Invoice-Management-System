@@ -1,6 +1,5 @@
 ﻿using InvoiceManagementSystem.Models;
 using System.Collections.Generic;
-using InvoiceManagementSystem.Models;
 
 namespace InvoiceManagementSystem.Database
 {

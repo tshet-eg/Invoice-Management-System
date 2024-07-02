@@ -1,20 +1,18 @@
 ﻿using InvoiceManagementSystem.Interfaces;
-using InvoiceManagementSystem.Models;
-using InvoiceManagementSystem.Repositories;
 using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Services
 {
-    public class CategoryService
+    public class Category
     {
         private readonly ICategory _category;
 
-        readonly CategoryRepository categoryRepository = new CategoryRepository();
-        public CategoryService(ICategory category)
+        readonly Repositories.Category categoryRepository = new Repositories.Category();
+        public Category(ICategory category)
         {
             _category = category;
         }
-        public void AddCategory(Category category)
+        public void AddCategory(Models.Category category)
         {
             _category.AddCategory(category);
         }
@@ -22,9 +20,9 @@ namespace InvoiceManagementSystem.Services
         {
             _category.EditCategory(categoryId, name, description, tax);
         }
-        public List<Category> DisplayCategory()
+        public List<Models.Category> DisplayCategory()
         {
-            List<Category> list = _category.DisplayCategory();
+            List<Models.Category> list = _category.DisplayCategory();
             return list;
 
         }
@@ -38,9 +36,9 @@ namespace InvoiceManagementSystem.Services
            return isPresent;
         }
 
-        public Category GetCategory(string categoryId)
+        public Models.Category GetCategory(string categoryId)
         {
-            Category categoryFound = _category.GetCategory(categoryId);
+            Models.Category categoryFound = _category.GetCategory(categoryId);
             return categoryFound;
         }
     }

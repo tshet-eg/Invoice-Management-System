@@ -1,11 +1,10 @@
 ﻿using InvoiceManagementSystem.Database;
 using InvoiceManagementSystem.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Repositories
 {
-    public class CategoryRepository : ICategory
+    public class Category : ICategory
     {
         public void AddCategory(Models.Category category)
         {
@@ -26,18 +25,18 @@ namespace InvoiceManagementSystem.Repositories
         }
         public void DeleteCategory(string categoryId)
         {
-           // ProductRepository productRepository = new ProductRepository();
+           Product productRepository = new Product();
             foreach (Models.Category category in DBEntity.CategoryList)
             {
                 if (category.CategoryID == categoryId) 
                 {
-                   // foreach(Models.Product product in DBEntity.ProductList)
-                    //{
-                     //   if(product.categoryID == categoryId)
-                        //{
-                           // productRepository.DeleteProducts(product.productId);
-                       // }
-                   // }
+                   foreach(Models.ProductsModel product in DBEntity.ProductList)
+                   {
+                       if(product.CategoryID == categoryId)
+                       {
+                           productRepository.DeleteProducts(product.ProductID);
+                       }
+                   }
                     DBEntity.CategoryList.Remove(category);
                     break;
                 }

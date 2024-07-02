@@ -1,8 +1,4 @@
-﻿using InvoiceManagementSystem.Database;
-using InvoiceManagementSystem.Interfaces;
-using InvoiceManagementSystem.Models;
-using InvoiceManagementSystem.Repositories;
-using InvoiceManagementSystem.Services;
+﻿using InvoiceManagementSystem.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -16,8 +12,8 @@ namespace InvoiceManagementSystem.Controllers
             {
                 int choice;
                 string categoryId;
-                ICategory categoryRepository = new CategoryRepository();
-                CategoryService categoryService = new CategoryService(categoryRepository);
+                ICategory categoryRepository = new Repositories.Category();
+                Services.Category categoryService = new Services.Category(categoryRepository);
                 do
                 {
                     Console.WriteLine("\n----------------MENU----------------");
