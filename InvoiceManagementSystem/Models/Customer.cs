@@ -2,21 +2,51 @@
 {
     public class Customer : BaseEntity
     {
-        private string _customerID;
-        public string CustomerID
+        public string CustomerID {  get; set; }
+        public string CustomerName { get; set; }
+        private string _customerEmail;
+        public string CustomerEmail 
         {
             get
             {
-                return _customerID;
+                return _customerEmail;
             }
             set
             {
-                _customerID = "CUST"+CustomerId;
+                if (Validations.Customer.ValidateEmail(value))
+                {
+                    _customerEmail = value;
+                }
+                else
+                    throw new System.Exception("Invalid Email-ID!!");
+            } 
+        }
+        private long _phoneNumber;
+        public long PhoneNumber 
+        {
+            get
+            {
+                return _phoneNumber;
+            }
+            set
+            {
+                if (Validations.Customer.ValidatePhone(value) && value.ToString().Length==10)
+                {
+                    _phoneNumber = value;   
+                }
+                else
+                    throw new System.Exception("Invalid Phone Number!!");
             }
         }
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
-        public long PhoneNumber {  get; set; }
         public string Address { get; set; }
+
+        public Customer(string name, long phoneNumber, string emailID, string address)
+        {
+            CustomerName = name;
+            CustomerEmail = emailID;
+            PhoneNumber = phoneNumber;
+            Address = address;
+            CustomerID= "CUST" + CustomerId;
+        }
     }
 }

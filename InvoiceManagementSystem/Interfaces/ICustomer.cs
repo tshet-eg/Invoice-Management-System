@@ -1,11 +1,12 @@
-﻿namespace InvoiceManagementSystem.Interfaces
+﻿using InvoiceManagementSystem.Models;
+namespace InvoiceManagementSystem.Interfaces
 {
-    internal interface ICustomer
+    public interface ICustomer
     {
-        void CreateCustomer();
-        void DisplayCustomerDetails();
-        void DeleteCustomer();
-        void EditCustomerDetaile();
+        string CreateCustomer(Customer customer);
+        Customer DisplayCustomerDetails(string CustomerID);
+        void DeleteCustomer(string CustomerID);
+        void EditCustomerDetails(string CustomerID, string name, long phone, string email, string address);
 
     }
 }
