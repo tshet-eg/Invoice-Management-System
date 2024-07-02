@@ -11,9 +11,9 @@ namespace InvoiceManagementSystem.Services
             _cart = cart;
         }
 
-        public string AddtoCart(string customerId, string productId, int quantity)
+        public void AddtoCart(string customerId, string productId, int quantity)
         {
-           return _cart.AddtoCart(customerId, productId, quantity);
+           _cart.AddtoCart(customerId, productId, quantity);
         }
 
         public void ClearCartItemsOfUser(string customerId)

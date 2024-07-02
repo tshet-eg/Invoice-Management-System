@@ -34,7 +34,7 @@ namespace InvoiceManagementSystem
                         Category categoryController = new Category();
                         categoryController.CustomerController();
                         break;
-                    case 3:Controllers.Product product = new Controllers.Product();
+                    case 3:Product product = new Product();
                         product.ProductSelection();
                         break;
                     case 4:Cart cart = new Cart();
