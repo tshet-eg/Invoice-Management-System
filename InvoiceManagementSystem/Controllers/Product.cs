@@ -23,7 +23,7 @@ namespace InvoiceManagementSystem.Controllers
                 Console.WriteLine("2. Delete Product");
                 Console.WriteLine("3. Edit Product");
                 Console.WriteLine("4. Display Product");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Back");
                 Console.Write("Select an option: ");
 
                 int option;
@@ -102,7 +102,7 @@ namespace InvoiceManagementSystem.Controllers
                                         Console.WriteLine("Tax" + Product.ProductTax);
                                         Console.WriteLine("Category ID: " + Product.CategoryID);
 
-                                        Console.WriteLine("\nSelect field to update: \n1. Name\n2. Description\n3. Price\n4. Discount\n5. Tax\n6. Exit");
+                                        Console.WriteLine("\nSelect field to update: \n1. Name\n2. Description\n3. Price\n4. Discount\n5. Tax\n6. Back");
                                         Console.Write("\nEnter your choice: ");
                                         int editChoice = Convert.ToInt32(Console.ReadLine());
                                         Console.WriteLine("\n");
