@@ -40,18 +40,18 @@ namespace InvoiceManagementSystem.Controllers
                             case 1:
 
 
-                                Console.WriteLine("Enter the product name");
+                                Console.Write("Enter the product: ");
                                 string ProductName = Console.ReadLine();
-                                Console.WriteLine("Enter the product description");
+                                Console.Write("Enter the product description: ");
                                 string ProductDescription = Console.ReadLine();
-                                Console.WriteLine("Enter the product price");
+                                Console.Write("Enter the product price: ");
                                 int ProductPrice = Convert.ToInt32(Console.ReadLine());
-                                Console.WriteLine("Enter the Tax for the Product");
+                                Console.Write("Enter the Tax for the Product: ");
                                 float ProductTax = float.Parse(Console.ReadLine());
-                                Console.WriteLine("Enter the Product discount");
+                                Console.Write("Enter the Product discount: ");
                                 double discount = Convert.ToDouble(Console.ReadLine());
                                 double ProductDiscount = discount / 100;
-                                Console.WriteLine("Enter the Category ID");
+                                Console.Write("Enter the Category ID: ");
                                 string productCategoryiD = Console.ReadLine();
 
                                 if (Validations.Category.CheckAvailability(productCategoryiD))
@@ -70,7 +70,7 @@ namespace InvoiceManagementSystem.Controllers
 
                                 break;
                             case 2:
-                                Console.WriteLine("Enter the product ID to delete");
+                                Console.Write("Enter the product ID to delete: ");
                                 string productID = Console.ReadLine();
                                 if (ProductValidation.ProductIdValidation(productID))
                                 {
@@ -168,13 +168,13 @@ namespace InvoiceManagementSystem.Controllers
                                 }
                                 foreach (var Product in result)
                                 {
-                                    Console.WriteLine($"ProductID: {Product.ProductID}");
-                                    Console.WriteLine($"Product Name: {Product.ProductName}");
-                                    Console.WriteLine($"Product Description: {Product.ProductDescription}");
-                                    Console.WriteLine($"Product Price: {Product.ProductPrice}");
-                                    Console.WriteLine($"Product Discount: {Product.ProductDiscount} ");
-                                    Console.WriteLine($"Product Tax:{Product.ProductTax}");
-                                    Console.WriteLine($"Product CategoryID: {Product.CategoryID}");
+                                    Console.Write($"ProductID          : {Product.ProductID}");
+                                    Console.Write($"Product Name       : {Product.ProductName}");
+                                    Console.Write($"Product Description: {Product.ProductDescription}");
+                                    Console.Write($"Product Price      : {Product.ProductPrice}");
+                                    Console.Write($"Product Discount   : {Product.ProductDiscount} ");
+                                    Console.Write($"Product Tax        :{Product.ProductTax}");
+                                    Console.Write($"Product CategoryID : {Product.CategoryID}");
 
                                 }
                                 break;
