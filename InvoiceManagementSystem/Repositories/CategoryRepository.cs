@@ -60,15 +60,5 @@ namespace InvoiceManagementSystem.Repositories
             }
             return categoryFound;
         }
-
-        public bool CheckAvailability(string categoryId)
-        {
-            foreach (Models.Category category in DBEntity.CategoryList)
-            {
-                if (category.CategoryID == categoryId)
-                    return true;
-            }
-            return false;
-        }
     }
 }

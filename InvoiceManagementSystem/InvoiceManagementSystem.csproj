@@ -62,6 +62,7 @@
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Validations\Category.cs" />
     <Compile Include="Validations\Customer.cs" />
   </ItemGroup>
   <ItemGroup>

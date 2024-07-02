@@ -1,6 +1,4 @@
-﻿using InvoiceManagementSystem.Controllers;
-using InvoiceManagementSystem.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Interfaces
 {
@@ -10,7 +8,7 @@ namespace InvoiceManagementSystem.Interfaces
         void EditCategory(string categoryId, string name, string description, float tax);
         void DeleteCategory(string categoryId);
         List<Models.Category> DisplayCategory();
-
+        Models.Category GetCategory(string categoryId);
 
     }
 }

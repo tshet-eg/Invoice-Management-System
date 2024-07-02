@@ -30,7 +30,7 @@ namespace InvoiceManagementSystem.Services
         }
         public bool DeleteCategory(string categoryId)
         {
-           bool isPresent = categoryRepository.CheckAvailability(categoryId);
+           bool isPresent = Validations.Category.CheckAvailability(categoryId);
             if (isPresent)
             {
                 _category.DeleteCategory(categoryId);
@@ -40,7 +40,7 @@ namespace InvoiceManagementSystem.Services
 
         public Category GetCategory(string categoryId)
         {
-            Category categoryFound = categoryRepository.GetCategory(categoryId);
+            Category categoryFound = _category.GetCategory(categoryId);
             return categoryFound;
         }
     }
