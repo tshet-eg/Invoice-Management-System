@@ -70,9 +70,10 @@ namespace InvoiceManagementSystem.Controllers
                                     Console.WriteLine("Customer address : " + customerEntry.Address);
                                     Console.WriteLine("\n---------------MENU---------------");
                                     Console.WriteLine(" 1.Change name\n 2.Change phone number\n 3.Change email address\n 4.Change address\n 5.Exit");
-                                    Console.WriteLine("----------------------------------");
+                                    Console.WriteLine("----------------------------------\n");
                                     Console.Write("Enter your option: ");
                                     option = int.Parse(Console.ReadLine());
+                                    Console.WriteLine("");
                                     switch (option)
                                     {
                                         case 1:
@@ -122,15 +123,15 @@ namespace InvoiceManagementSystem.Controllers
                         {
                             Console.Write("Enter unique customer ID: ");
                             customerId = Console.ReadLine();
-                            Models.Customer displayCustomer = customer.DisplayCustomerDetails(customerId);
+                            Models.Customer displayCustomer = customer.GetCustomer(customerId);
                             if (displayCustomer == null)
                             {
                                 Console.ForegroundColor= ConsoleColor.Red;
-                                Console.WriteLine("Customer ID not found!!");
+                                Console.WriteLine("\nCustomer ID not found!!");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 break;
                             }
-                            Console.WriteLine($"Customer {customerId} details:");
+                            Console.WriteLine($"\nCustomer {customerId} details:");
                             Console.WriteLine("Customer name : " + displayCustomer.CustomerName);
                             Console.WriteLine("Customer phone number : " + displayCustomer.PhoneNumber);
                             Console.WriteLine("Customer email : " + displayCustomer.CustomerEmail);
@@ -150,10 +151,10 @@ namespace InvoiceManagementSystem.Controllers
                         if (!isPresent)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Provided customer ID does not exist");
+                            Console.WriteLine("\nProvided customer ID does not exist");
                             Console.ForegroundColor = ConsoleColor.White; break;
                         }
-                        Console.WriteLine("Customer deleted successfully!!");
+                        Console.WriteLine("\nCustomer deleted successfully!!");
                         break;
                     case 5:
                         break;

@@ -15,7 +15,7 @@ namespace InvoiceManagementSystem
             Console.WriteLine("5. Generate invoice");
             Console.WriteLine("6. Exit");
             Console.WriteLine("----------------------------------------");
-            Console.Write("Enter your choice: ");
+            Console.Write("\nEnter your choice: ");
             choice = Convert.ToInt32(Console.ReadLine());
         }
         static void Main(string[] args)

@@ -36,41 +36,15 @@ namespace InvoiceManagementSystem.Repositories
                 }
             }
         }
-        public Models.Customer DisplayCustomerDetails(string CustomerID)
-        {
-            Models.Customer customer = null;
-            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
-            {
-                if (CustomerID == customerEntry.CustomerID)
-                {
-                    customer = customerEntry;
-
-                }
-            }
-            return customer;
-        }
-        public bool CheckCustomer(string CustomerID)
-        {
-            bool isPresent = false;
-            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
-            {
-                if (CustomerID == customerEntry.CustomerID)
-                {
-                    isPresent = true;
-                    break;
-                }
-            }
-            return isPresent;
-        }
-
         public Models.Customer GetCustomer(string CustomerID)
         {
             Models.Customer customer = null;
-            foreach(Models.Customer customerEntry in DBEntity.CustomerList)
+            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
             {
                 if (CustomerID == customerEntry.CustomerID)
                 {
                     customer = customerEntry;
+
                 }
             }
             return customer;
