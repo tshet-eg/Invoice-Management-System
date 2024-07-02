@@ -2,10 +2,10 @@
 
 namespace InvoiceManagementSystem.Services
 {
-    public class Customer
+    public class CustomerService
     {
         public ICustomer _iCustomer;
-        public Customer(ICustomer customer)
+        public CustomerService(ICustomer customer)
         {
             _iCustomer = customer;
         }

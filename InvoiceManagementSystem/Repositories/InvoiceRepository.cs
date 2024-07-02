@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace InvoiceManagementSystem.Repositories
 {
 
-    public class Invoice :BaseEntity, IInvoice, IDiscount, ITax
+    public class InvoiceRepository :BaseEntity, IInvoice, IDiscount, ITax
     {
         private float _subtotal;
 
@@ -78,7 +78,7 @@ namespace InvoiceManagementSystem.Repositories
         }
         Models.Customer fetchcustomer(string customerID)
         {
-            foreach (Models.Customer customer in DBEntity.CustomerList)
+            foreach (Models.Customer customer in EntityCollection.CustomerList)
             {
                 if (customer.CustomerID == customerID)
                     return customer;

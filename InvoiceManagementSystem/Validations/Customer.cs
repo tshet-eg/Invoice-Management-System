@@ -7,7 +7,7 @@ namespace InvoiceManagementSystem.Validations
     {
         public static  bool CheckCustomer(string CustomerID)
         {
-            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
+            foreach (Models.Customer customerEntry in EntityCollection.CustomerList)
                 if (CustomerID == customerEntry.CustomerID)
                return true;
             return false;

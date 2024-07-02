@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Services
 {
-    public class Category
+    public class CategoryService
     {
         private readonly ICategory _category;
 
-        readonly Repositories.Category categoryRepository = new Repositories.Category();
-        public Category(ICategory category)
+        readonly Repositories.CategoryRepository categoryRepository = new Repositories.CategoryRepository();
+        public CategoryService(ICategory category)
         {
             _category = category;
         }

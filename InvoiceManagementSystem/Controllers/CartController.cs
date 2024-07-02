@@ -11,7 +11,7 @@ namespace InvoiceManagementSystem.Controllers
             int choice;
             int quantity;
             string customerId, productId, cartId;
-            Services.Cart cart = new Services.Cart(new Repositories.Cart());
+            Services.CartService cart = new Services.CartService(new Repositories.CartRepository());
             do
             {
                 //showing the menu

@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Repositories
 {
-    public class Category : ICategory
+    public class CategoryRepository : ICategory
     {
         public void AddCategory(Models.Category category)
         {
-            DBEntity.CategoryList.Add(category);
+            EntityCollection.CategoryList.Add(category);
         }
         public void EditCategory(string categoryId, string name, string description, float tax)
         {
-            foreach (Models.Category category in DBEntity.CategoryList)
+            foreach (Models.Category category in EntityCollection.CategoryList)
             {
                 if (category.CategoryID == categoryId)
                 {
@@ -26,19 +26,19 @@ namespace InvoiceManagementSystem.Repositories
         public void DeleteCategory(string categoryId)
         {
            List<string> productIdList = new List<string>();
-           Product productRepository = new Product();
-            foreach (Models.Category category in DBEntity.CategoryList)
+           ProductRepository productRepository = new ProductRepository();
+            foreach (Models.Category category in EntityCollection.CategoryList)
             {
                 if (category.CategoryID == categoryId) 
                 {
-                   foreach(Models.Product product in DBEntity.ProductList)
+                   foreach(Models.Product product in EntityCollection.ProductList)
                    {
                        if(product.CategoryID == categoryId)
                        {
                            productIdList.Add(product.ProductID);
                        }
                    }
-                    DBEntity.CategoryList.Remove(category);
+                    EntityCollection.CategoryList.Remove(category);
                     break;
                 }
             }
@@ -49,13 +49,13 @@ namespace InvoiceManagementSystem.Repositories
         }
         public List<Models.Category> DisplayCategory()
         {
-            return DBEntity.CategoryList;
+            return EntityCollection.CategoryList;
         }
 
         public Models.Category GetCategory(string categoryId)
         {
             Models.Category categoryFound = null;
-            foreach (Models.Category category in DBEntity.CategoryList)
+            foreach (Models.Category category in EntityCollection.CategoryList)
             {
                 if (category.CategoryID == categoryId)
                 {

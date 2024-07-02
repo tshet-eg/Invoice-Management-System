@@ -8,12 +8,12 @@ using InvoiceManagementSystem.Database;
 
 namespace InvoiceManagementSystem.Repositories
 {
-    public class Product:IProduct
+    public class ProductRepository:IProduct
     {
         public void AddProducts(string productName, string productDescription, int productPrice, float productDiscount, float productTax, string categoryID)
         {
             Models.Product Product = new Models.Product(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
-            DBEntity.ProductList.Add(Product);
+            EntityCollection.ProductList.Add(Product);
 
 
         }
@@ -21,11 +21,11 @@ namespace InvoiceManagementSystem.Repositories
         public void DeleteProducts(string productId)
         {
             
-            foreach (var Product in DBEntity.ProductList)
+            foreach (var Product in EntityCollection.ProductList)
             {
                 if (Product.ProductID==productId)
                 {
-                    DBEntity.ProductList.Remove(Product);
+                    EntityCollection.ProductList.Remove(Product);
                     Console.WriteLine("Deleted successfully");
                     break;
                 }
@@ -46,7 +46,7 @@ namespace InvoiceManagementSystem.Repositories
 
         public List<Models.Product> DisplayProducts()
         {
-           return DBEntity.ProductList;
+           return EntityCollection.ProductList;
         }
 
        

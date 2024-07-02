@@ -3,16 +3,16 @@ using System;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Customer
+    public class CustomerController
     {
         int choice;
-        public void CustomerController()
+        public void CustomerOperations()
         {
             try
             {
                 string customerId;
-                ICustomer customerRepository = new Repositories.Customer();
-                Services.Customer customer = new Services.Customer(customerRepository);
+                ICustomer customerRepository = new Repositories.CustomerRepository();
+                Services.CustomerService customer = new Services.CustomerService(customerRepository);
                 do
                 {
                     Console.WriteLine("\n----------------CUSTOMER MENU----------------");
