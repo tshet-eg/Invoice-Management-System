@@ -16,13 +16,13 @@ namespace InvoiceManagementSystem.Controllers
                 Services.Category categoryService = new Services.Category(categoryRepository);
                 do
                 {
-                    Console.WriteLine("\n----------------MENU----------------");
+                    Console.WriteLine("\n----------------CATEGORY MENU----------------");
                     Console.WriteLine("1. Add Category");
                     Console.WriteLine("2. Update Category");
                     Console.WriteLine("3. Display Category");
                     Console.WriteLine("4. Delete Category");
-                    Console.WriteLine("5. Exit");
-                    Console.WriteLine("------------------------------------\n");
+                    Console.WriteLine("5. BACK");
+                    Console.WriteLine("---------------------------------------------\n");
                     Console.Write("Enter your choice: ");
                     choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
@@ -38,14 +38,12 @@ namespace InvoiceManagementSystem.Controllers
                                 float tax = float.Parse(Console.ReadLine());
                                 Models.Category categoryModel = new Models.Category(categoryName, categoryDescriptipn, tax);
                                 categoryService.AddCategory(categoryModel);
-                                Console.WriteLine("\nCategory added successfully!!");
+                                DisplayMessage.DisplaySuccessMessage("\nCategory added successfully!!");
 
                             }
                             catch (Exception e)
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n" + e.Message);
-                                Console.ForegroundColor = ConsoleColor.White;
+                                DisplayMessage.DisplayErrorMessage(e.Message);
                             }
                             break;
                         case 2:
@@ -56,9 +54,7 @@ namespace InvoiceManagementSystem.Controllers
                                 Models.Category updateCategory = categoryService.GetCategory(categoryId);
                                 if (updateCategory == null)
                                 {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("\nProvided category ID does not exist!!");
-                                    Console.ForegroundColor = ConsoleColor.White;
+                                    DisplayMessage.DisplayErrorMessage("\nProvided category ID does not exist!!");
                                     break;
                                 }
                                 int editChoice;
@@ -69,7 +65,7 @@ namespace InvoiceManagementSystem.Controllers
                                     Console.WriteLine("Description: " + updateCategory.Description);
                                     Console.WriteLine("Tax: " + updateCategory.Tax);
 
-                                    Console.WriteLine("\nSelect field to update: \n1. Name\n2. Description\n3. Tax\n4. Exit");
+                                    Console.WriteLine("\nSelect field to update: \n1. Name\n2. Description\n3. Tax\n4. BACK");
                                     Console.Write("\nEnter your choice: ");
                                     editChoice = Convert.ToInt32(Console.ReadLine());
 
@@ -79,35 +75,31 @@ namespace InvoiceManagementSystem.Controllers
                                             Console.Write("Enter new category name: ");
                                             string updatedName = Console.ReadLine();
                                             categoryService.EditCategory(categoryId, updatedName, updateCategory.Description, updateCategory.Tax);
-                                            Console.WriteLine("\nCategory name updated successfully!!");
+                                            DisplayMessage.DisplaySuccessMessage("\nCategory name updated successfully!!");
                                             break;
                                         case 2:
                                             Console.Write("\nEnter new category description: ");
                                             string updatedDescription = Console.ReadLine();
                                             categoryService.EditCategory(categoryId, updateCategory.Name, updatedDescription, updateCategory.Tax);
-                                            Console.WriteLine("\nCategory description updated successfully!!");
+                                            DisplayMessage.DisplaySuccessMessage("\nCategory description updated successfully!!");
                                             break;
                                         case 3:
                                             Console.Write("\nEnter new category tax: ");
                                             float updatedTax = float.Parse(Console.ReadLine());
                                             categoryService.EditCategory(categoryId, updateCategory.Name, updateCategory.Description, updatedTax);
-                                            Console.WriteLine("\nCategory tax updated successfully!!");
+                                            DisplayMessage.DisplaySuccessMessage("\nCategory tax updated successfully!!");
                                             break;
                                         case 4:
                                             break;
                                         default:
-                                            Console.ForegroundColor = ConsoleColor.Red;
-                                            Console.WriteLine("\nInvalid choice!!");
-                                            Console.ForegroundColor = ConsoleColor.White;
+                                            DisplayMessage.DisplayErrorMessage("\nInvalid choice!!");
                                             break;
                                     }
                                 } while (editChoice != 4);
                             }
                             catch (Exception e)
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n" + e.Message);
-                                Console.ForegroundColor = ConsoleColor.White;
+                                DisplayMessage.DisplayErrorMessage(e.Message);
                             }
                             break;
 
@@ -127,16 +119,12 @@ namespace InvoiceManagementSystem.Controllers
                                 }
                                 else
                                 {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("\nCategory list is empty!!");
-                                    Console.ForegroundColor = ConsoleColor.White;
+                                    DisplayMessage.DisplayErrorMessage("\nCategory list is empty!!");
                                 }
                             }
                             catch (Exception e)
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n" + e.Message);
-                                Console.ForegroundColor = ConsoleColor.White;
+                                DisplayMessage.DisplayErrorMessage(e.Message);
                             }
                             break;
 
@@ -147,19 +135,15 @@ namespace InvoiceManagementSystem.Controllers
                                 categoryId = Console.ReadLine();
                                 bool isPresent = categoryService.DeleteCategory(categoryId);
                                 if (isPresent)
-                                    Console.WriteLine("\nCategory deleted!!");
+                                    DisplayMessage.DisplaySuccessMessage("\nCategory deleted!!");
                                 else
                                 {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine($"\nProvided Category ID {categoryId} does not exist!!");
-                                    Console.ForegroundColor = ConsoleColor.White;
+                                    DisplayMessage.DisplayErrorMessage($"\nProvided Category ID {categoryId} does not exist!!");
                                 }
                             }
                             catch (Exception e)
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n" + e.Message);
-                                Console.ForegroundColor = ConsoleColor.White;
+                                DisplayMessage.DisplayErrorMessage(e.Message);
                             }
                             break;
 
@@ -167,16 +151,14 @@ namespace InvoiceManagementSystem.Controllers
                             break;
 
                         default:
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("\nInvalid choice!!");
-                            Console.ForegroundColor = ConsoleColor.White;
+                            DisplayMessage.DisplayErrorMessage("\nInvalid choice!!");
                             break;
                     }
                 } while (choice != 5);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                DisplayMessage.DisplayErrorMessage(e.Message);
             }
         }
     }
