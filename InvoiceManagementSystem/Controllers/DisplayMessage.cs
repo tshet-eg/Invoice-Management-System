@@ -12,7 +12,7 @@ namespace InvoiceManagementSystem.Controllers
             Console.WriteLine($"\n{message}\n");
             Console.ForegroundColor = ConsoleColor.White;
         }
-        //method to display the error message
+        //method to display the success message
         public static void DisplaySuccessMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
