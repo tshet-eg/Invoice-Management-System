@@ -8,7 +8,7 @@ namespace InvoiceManagementSystem
         static void DisplayOptions()
         {
             Console.WriteLine();
-            Console.WriteLine("1. Create account");
+            Console.WriteLine("1. Category");
             Console.WriteLine("2. Deposit amount");
             Console.WriteLine("3. Withdraw amount");
             Console.WriteLine("4. Check account balance");
@@ -29,6 +29,10 @@ namespace InvoiceManagementSystem
                 DisplayOptions();
                 switch (choice)
                 {
+                    case 1:
+                        Controllers.Category categoryController = new Controllers.Category();
+                        categoryController.CustomerController();
+                        break;
                 }
 
             } while (choice != 9);

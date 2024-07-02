@@ -1,11 +1,15 @@
-﻿namespace InvoiceManagementSystem.Interfaces
+﻿using InvoiceManagementSystem.Controllers;
+using InvoiceManagementSystem.Models;
+using System.Collections.Generic;
+
+namespace InvoiceManagementSystem.Interfaces
 {
-    internal interface ICategory
+    public interface ICategory
     {
-        void AddCategory();
-        void EditCategory();
-        void DeleteCategory();
-        void DisplayCategory();
+        void AddCategory(Models.Category category);
+        void EditCategory(string categoryId, string name, string description, float tax);
+        void DeleteCategory(string categoryId);
+        List<Models.Category> DisplayCategory();
 
 
     }
