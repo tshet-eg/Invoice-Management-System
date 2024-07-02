@@ -8,31 +8,41 @@ namespace InvoiceManagementSystem
         static void DisplayOptions()
         {
             Console.WriteLine();
-            Console.WriteLine("1. Create account");
-            Console.WriteLine("2. Deposit amount");
-            Console.WriteLine("3. Withdraw amount");
-            Console.WriteLine("4. Check account balance");
-            Console.WriteLine("5. Bank transfer");
-            Console.WriteLine("6. Display details");
-            Console.WriteLine("7. Edit details");
-            Console.WriteLine("8. Apply for ATM card");
-            Console.WriteLine("9. Exit");
+            Console.WriteLine("1. Customer operations");
+            Console.WriteLine("2. Category operations");
+            Console.WriteLine("3. Product operations");
+            Console.WriteLine("4. Cart operations");
+            Console.WriteLine("5. Generate invoice");
+            Console.WriteLine("6. Exit");
             Console.WriteLine("----------------------------------------");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Enter your choice: ");
+            Console.Write("\nEnter your choice: ");
             choice = Convert.ToInt32(Console.ReadLine());
         }
         static void Main(string[] args)
         {
-            InvoiceManagementSystem.Controllers.Product.ProductSelection();
-           /* do
+            do
             {
                 DisplayOptions();
                 switch (choice)
                 {
+                    case 1:
+                        Controllers.Customer customer = new Controllers.Customer();
+                        customer.CustomerController();
+                        break;
+                    case 2:
+                        Controllers.Category categoryController = new Controllers.Category();
+                        categoryController.CustomerController();
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Enter correct option!!");
+                        Console.ForegroundColor= ConsoleColor.White;
+                        break;
                 }
 
-            } while (choice != 9);*/
+            } while (choice != 6);
         }
     }
 }
