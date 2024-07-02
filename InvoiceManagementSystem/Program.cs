@@ -7,7 +7,7 @@ namespace InvoiceManagementSystem
     {
         static void DisplayOptions(out int choice)
         {
-            Console.WriteLine("\n\n-----------------INVOICE GENERATOR MENU -----------------");
+            Console.WriteLine("\n\n-----------------MENU -----------------");
             Console.WriteLine("1. Customer operations");
             Console.WriteLine("2. Category operations");
             Console.WriteLine("3. Product operations");
