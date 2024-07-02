@@ -25,6 +25,7 @@ namespace InvoiceManagementSystem.Repositories
         }
         public void DeleteCategory(string categoryId)
         {
+           List<string> productIdList = new List<string>();
            Product productRepository = new Product();
             foreach (Models.Category category in DBEntity.CategoryList)
             {
@@ -34,12 +35,16 @@ namespace InvoiceManagementSystem.Repositories
                    {
                        if(product.CategoryID == categoryId)
                        {
-                           productRepository.DeleteProducts(product.ProductID);
+                           productIdList.Add(product.ProductID);
                        }
                    }
                     DBEntity.CategoryList.Remove(category);
                     break;
                 }
+            }
+            foreach(string productID in productIdList)
+            {
+                productRepository.DeleteProducts(productID);
             }
         }
         public List<Models.Category> DisplayCategory()

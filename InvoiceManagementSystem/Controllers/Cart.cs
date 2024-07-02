@@ -53,8 +53,8 @@ namespace InvoiceManagementSystem.Controllers
                                 break;
                             }
                             cart.AddtoCart(customerId, productId, quantity); //function to add items to cart
-                            DisplayMessage.DisplaySuccessMessage("Successfull added to cart");
-                        }
+                               DisplayMessage.DisplaySuccessMessage("Successfull added to cart");
+                            }
                         catch (FormatException)
                         {
                             DisplayMessage.DisplayErrorMessage("Number is required");
