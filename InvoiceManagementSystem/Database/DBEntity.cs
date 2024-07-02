@@ -1,6 +1,7 @@
 ﻿using InvoiceManagementSystem.Models;
 using System.Collections.Generic;
 
+
 namespace InvoiceManagementSystem.Database
 {
     public class DBEntity
