@@ -2,22 +2,33 @@
 {
     public class Category : BaseEntity
     {
-        private string _categoryID;
-        
-        public string CategoryID{ 
-            get
+        public string CategoryID{get; set;}
+        public string Name { get; set; }
+        public string Description { get; set; }
+        private float _tax;
+        public float Tax 
+        {
+            get 
             { 
-                return _categoryID;
-            } 
-            set 
+                return _tax;
+            }
+            set
             {
-                _categoryID = "Cat" + CategoryId;
+                if (value >= 0)
+                {
+                    _tax = value;
+                }
+                else
+                    throw new System.Exception("Invalid tax!!");
             }
         }
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public float Tax { get; set; }
-
+        public Category(string name, string description, float tax) 
+        {
+            Name = name;
+            Description = description;
+            Tax = tax;
+            CategoryID = "CAT" + CategoryId;
+        }
     }
 }
