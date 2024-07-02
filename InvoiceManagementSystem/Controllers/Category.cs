@@ -46,7 +46,7 @@ namespace InvoiceManagementSystem.Controllers
                                 DisplayMessage.DisplayErrorMessage(e.Message);
                             }
                             break;
-                        case 2:
+                        case 2: 
                             try
                             {
                                 Console.Write("\nEnter the category ID to update: ");
