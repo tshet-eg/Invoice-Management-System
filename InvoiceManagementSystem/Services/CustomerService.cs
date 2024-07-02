@@ -1,7 +1,8 @@
 ﻿
 namespace InvoiceManagementSystem.Services
 {
-    internal class CustomerService
+    public class CustomerService
     {
+
     }
 }
