@@ -16,7 +16,7 @@ namespace InvoiceManagementSystem
         protected int CategoryId {
             get { return ++_categoryId; }
         }
-        protected static int ProductId {
+        protected  int ProductId {
             get { return ++_productId; }
         }
         protected int CartId {

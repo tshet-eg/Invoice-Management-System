@@ -10,8 +10,9 @@ namespace InvoiceManagementSystem.Repositories
 {
     public class Product:IProduct
     {
-        public void AddProducts(Models.ProductsModel Product )
+        public void AddProducts(string productName, string productDescription, int productPrice, double productDiscount, float productTax, string categoryID)
         {
+            Models.ProductsModel Product = new Models.ProductsModel(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
             DBEntity.ProductList.Add(Product);
 
 
@@ -32,25 +33,20 @@ namespace InvoiceManagementSystem.Repositories
             }
 
         }
-        public void EditProductDetails(Models.ProductsModel Product)
+        public void EditProductDetails(Models.ProductsModel Product,string productName, string productDescription, int productPrice, double productDiscount, float productTax)
         {
-            DBEntity.ProductList.Add(Product);
+            Product.ProductName = productName;
+            Product.ProductDescription = productDescription;
+            Product.ProductPrice = productPrice;
+            Product.ProductDiscount = productDiscount;
+            Product.ProductTax = productTax;
+
         }
 
- 
-        public void DisplayProducts()
-        {
-            foreach(var Product in DBEntity.ProductList)
-            {
-                Console.WriteLine($"ProductID: {Product.ProductID}");
-                Console.WriteLine($"Product Name: {Product.ProductName}");
-                Console.WriteLine($"Product Description: {Product.ProductDescription}");
-                Console.WriteLine($"Product Price: {Product.ProductPrice}");
-                Console.WriteLine($"Product Discount: {Product.ProductDiscount} ");
-                Console.WriteLine($"Product Tax:{ Product.ProductTax}");
-                Console.WriteLine($"Product CategoryID: {Product.CategoryID}");
 
-            }
+        public List<ProductsModel> DisplayProducts()
+        {
+           return DBEntity.ProductList;
         }
 
        
