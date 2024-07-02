@@ -10,7 +10,7 @@ using InvoiceManagementSystem.Validations;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Product:BaseEntity
+    public class ProductController:BaseEntity
     {
         public void ProductSelection()
         {
@@ -27,7 +27,7 @@ namespace InvoiceManagementSystem.Controllers
                 Console.Write("Select an option: ");
 
                 int option;
-                var ProductRepoObject = new Repositories.Product();
+                var ProductRepoObject = new Repositories.ProductRepository();
                 var ProductObject = new Models.Product();
                 try
                 {
@@ -56,7 +56,7 @@ namespace InvoiceManagementSystem.Controllers
 
                                 if (Validations.Category.CheckAvailability(productCategoryiD))
                                 {
-                                    var AddProduct = new Services.Product(ProductRepoObject);
+                                    var AddProduct = new Services.ProductService(ProductRepoObject);
                                     AddProduct.AddProductsService(ProductName, ProductDescription, ProductPrice, ProductDiscount, ProductTax, productCategoryiD);
                                 }
                                 else
@@ -74,7 +74,7 @@ namespace InvoiceManagementSystem.Controllers
                                 string productID = Console.ReadLine();
                                 if (ProductValidation.ProductIdValidation(productID))
                                 {
-                                    var DeleteProduct = new Services.Product(ProductRepoObject);
+                                    var DeleteProduct = new Services.ProductService(ProductRepoObject);
                                     DeleteProduct.DeleteProductsService(productID);
                                 }
                                 else
@@ -90,7 +90,7 @@ namespace InvoiceManagementSystem.Controllers
                                 Console.Write("Enter the Product ID to update: ");
                                 string productId = Console.ReadLine();
 
-                                foreach (var Product in DBEntity.ProductList)
+                                foreach (var Product in EntityCollection.ProductList)
                                 {
                                     if (Product.ProductID == productId)
                                     {
@@ -112,21 +112,21 @@ namespace InvoiceManagementSystem.Controllers
                                                 Console.Write("Enter new Product name: ");
                                                 string productName = Console.ReadLine();
                                             
-                                                dynamic EditProductName = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductName = new Services.ProductService(ProductRepoObject);
                                                 EditProductName.EditProductDetailsService(Product,productName,Product.ProductDescription,Product.ProductPrice,Product.ProductDiscount,Product.ProductTax);
                                                 Console.Write("\nProduct name updated successfully!!");
                                                 break;
                                             case 2:
                                                 Console.Write("Enter new Product description: ");
                                                 dynamic productDescription = Console.ReadLine();
-                                                dynamic EditProductDescription = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductDescription = new Services.ProductService(ProductRepoObject);
                                                 EditProductDescription.EditProductDetailsService(Product,Product.ProductName,productDescription, Product.ProductPrice, Product.ProductDiscount, Product.ProductTax);
                                                 Console.Write("\nProduct description updated successfully!!");
                                                 break;
                                             case 3:
                                                 Console.Write("Enter new Product price: ");
                                                 dynamic productPrice = Convert.ToInt16(Console.ReadLine());
-                                                dynamic EditProductPrice = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductPrice = new Services.ProductService(ProductRepoObject);
                                                 EditProductPrice.EditProductDetailsService(Product, Product.ProductName, Product.ProductDescription, productPrice, Product.ProductDiscount, Product.ProductTax);
                                                 Console.Write("\nProduct tax updated successfully!!");
                                                 break;
@@ -135,14 +135,14 @@ namespace InvoiceManagementSystem.Controllers
                                                 double Pdiscount = Convert.ToDouble(Console.ReadLine());
                                                 double productDiscount = Pdiscount / 100;
 
-                                                dynamic EditProductDiscount = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductDiscount = new Services.ProductService(ProductRepoObject);
                                                 EditProductDiscount(Product, Product.ProductName, Product.ProductDescription, Product.ProductPrice, productDiscount, Product.ProductTax);
                                                 Console.Write("\nProduct tax updated successfully!!");
                                                 break;
                                             case 5:
                                                 Console.Write("Enter new Product Tax: ");
                                                 dynamic productTax = float.Parse(Console.ReadLine());
-                                                dynamic EditProductTax = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductTax = new Services.ProductService(ProductRepoObject);
                                                 EditProductTax.EditProductDetailsService(Product, Product.ProductName, Product.ProductDescription, Product.ProductPrice, Product.ProductDiscount, productTax);
                                                 Console.Write("\nProduct tax updated successfully!!");
                                                 break;
@@ -159,7 +159,7 @@ namespace InvoiceManagementSystem.Controllers
 
                                 break;
                             case 4:
-                                var DisplayProduct = new Services.Product(ProductRepoObject);
+                                var DisplayProduct = new Services.ProductService(ProductRepoObject);
                                 List<Models.Product> result = DisplayProduct.DisplayProductsService();
                                 if(result.Count == 0)
                                 {

@@ -7,7 +7,7 @@ namespace InvoiceManagementSystem.Validations
     {
         public static bool ProductIdValidation(string productID)
         {
-            foreach (var item in DBEntity.ProductList)
+            foreach (var item in EntityCollection.ProductList)
             {
 
                 if (item.ProductID == productID)

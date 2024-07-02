@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Category
+    public class CategoryController
     {
-        public void CategoryController()
+        public void CategoryOperations()
         {
             try
             {
                 int choice;
                 string categoryId;
-                ICategory categoryRepository = new Repositories.Category();
-                Services.Category categoryService = new Services.Category(categoryRepository);
+                ICategory categoryRepository = new Repositories.CategoryRepository();
+                Services.CategoryService categoryService = new Services.CategoryService(categoryRepository);
                 do
                 {
                     Console.WriteLine("\n----------------CATEGORY MENU----------------");

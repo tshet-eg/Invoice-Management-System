@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Database
 {
-    public class DBEntity
+    public class EntityCollection
     {
         public static List<Customer> CustomerList = new List<Customer>();
         public static List<Category> CategoryList = new List<Category>();

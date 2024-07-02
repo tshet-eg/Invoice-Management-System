@@ -5,14 +5,14 @@ using System.Linq;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Invoice
+    public class InvoiceController
     {
         public void InvoiceGeneration()
         {
             string customerID;
-            Services.Cart cartService = new Services.Cart(new Repositories.Cart());
-            IInvoice invoiceRepository = new Repositories.Invoice();
-            Services.Invoice invoiceService = new Services.Invoice(invoiceRepository);
+            Services.CartService cartService = new Services.CartService(new Repositories.CartRepository());
+            IInvoice invoiceRepository = new Repositories.InvoiceRepository();
+            Services.InvoiceService invoiceService = new Services.InvoiceService(invoiceRepository);
 
             Console.WriteLine("Enter the customer ID");
             customerID = Console.ReadLine();

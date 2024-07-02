@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 namespace InvoiceManagementSystem.Services
 {
-    public class Invoice
+    public class InvoiceService
     {
         private IInvoice _invoice;
-        public Invoice(IInvoice invoice)
+        public InvoiceService(IInvoice invoice)
         {
             _invoice = invoice;
         }

@@ -5,10 +5,10 @@ namespace InvoiceManagementSystem.Services
 {
 
 
-    public class Product
+    public class ProductService
     {
         private readonly IProduct _product;
-        public Product(Repositories.Product ProductObject)
+        public ProductService(Repositories.ProductRepository ProductObject)
         {
             _product = ProductObject;
         }

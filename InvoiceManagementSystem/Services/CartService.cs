@@ -1,13 +1,12 @@
 ﻿using InvoiceManagementSystem.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Services
 {
-    public class Cart
+    public class CartService
     {
         private ICart _cart;
-        public Cart(ICart cart)
+        public CartService(ICart cart)
         {
             _cart = cart;
         }
