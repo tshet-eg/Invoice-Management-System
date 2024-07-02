@@ -12,7 +12,7 @@ namespace InvoiceManagementSystem.Repositories
     {
         public void AddProducts(string productName, string productDescription, int productPrice, double productDiscount, float productTax, string categoryID)
         {
-            Models.ProductsModel Product = new Models.ProductsModel(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
+            Models.Product Product = new Models.Product(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
             DBEntity.ProductList.Add(Product);
 
 
@@ -33,7 +33,7 @@ namespace InvoiceManagementSystem.Repositories
             }
 
         }
-        public void EditProductDetails(Models.ProductsModel Product,string productName, string productDescription, int productPrice, double productDiscount, float productTax)
+        public void EditProductDetails(Models.Product Product,string productName, string productDescription, int productPrice, double productDiscount, float productTax)
         {
             Product.ProductName = productName;
             Product.ProductDescription = productDescription;
@@ -44,7 +44,7 @@ namespace InvoiceManagementSystem.Repositories
         }
 
 
-        public List<ProductsModel> DisplayProducts()
+        public List<Models.Product> DisplayProducts()
         {
            return DBEntity.ProductList;
         }

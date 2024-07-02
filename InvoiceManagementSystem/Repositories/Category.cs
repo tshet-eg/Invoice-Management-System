@@ -30,7 +30,7 @@ namespace InvoiceManagementSystem.Repositories
             {
                 if (category.CategoryID == categoryId) 
                 {
-                   foreach(Models.ProductsModel product in DBEntity.ProductList)
+                   foreach(Models.Product product in DBEntity.ProductList)
                    {
                        if(product.CategoryID == categoryId)
                        {

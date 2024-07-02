@@ -28,7 +28,7 @@ namespace InvoiceManagementSystem.Controllers
 
                 int option;
                 var ProductRepoObject = new Repositories.Product();
-                var ProductObject = new Models.ProductsModel();
+                var ProductObject = new Models.Product();
                 try
                 {
 
@@ -160,7 +160,7 @@ namespace InvoiceManagementSystem.Controllers
                                 break;
                             case 4:
                                 var DisplayProduct = new Services.Product(ProductRepoObject);
-                                List<ProductsModel> result= DisplayProduct.DisplayProductsService();
+                                List<Models.Product> result = DisplayProduct.DisplayProductsService();
                                 if(result.Count == 0)
                                 {
                                     Console.WriteLine("Product List is Empty");
