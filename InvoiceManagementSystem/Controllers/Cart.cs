@@ -15,6 +15,7 @@ namespace InvoiceManagementSystem.Controllers
             do
             {
                 //showing the menu
+                Console.WriteLine("\n----------------MENU----------------");
                 Console.WriteLine("1. Add items to Cart");
                 Console.WriteLine("2. Display all items in the cart");
                 Console.WriteLine("3. Display all cart items a customer");
@@ -22,6 +23,7 @@ namespace InvoiceManagementSystem.Controllers
                 Console.WriteLine("5. Delete a single cart item");
                 Console.WriteLine("6. Edit a cart item");
                 Console.WriteLine("7. Exit");
+                Console.Write("Enter your choice: ");
                 choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
