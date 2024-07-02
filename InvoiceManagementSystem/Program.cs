@@ -6,8 +6,8 @@ namespace InvoiceManagementSystem
 {
     public class Program
     {
-        static void DisplayOptions(out int choice)
-        {
+        static int DisplayOptions()
+        { int choice;
             Console.WriteLine("\n\n-----------------MENU -----------------");
             Console.WriteLine("1. Customer operations");
             Console.WriteLine("2. Category operations");
@@ -17,41 +17,54 @@ namespace InvoiceManagementSystem
             Console.WriteLine("6. Exit");
             Console.WriteLine("----------------------------------------");
             Console.Write("\nEnter your choice: ");
-            choice = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                choice = Convert.ToInt32(Console.ReadLine());
+                return choice;
+            }
+            catch (Exception) {
+                DisplayMessage.DisplayErrorMessage("Numbers required");
+                return -1;
+            }
         }
         static void Main(string[] args)
         {
             int choice;
-            do
-            {
-                DisplayOptions(out choice);
-                switch (choice)
+                do
                 {
-                    case 1:
-                        Customer customer = new Customer();
-                        customer.CustomerController();
-                        break;
-                    case 2:
-                        Category categoryController = new Category();
-                        categoryController.CustomerController();
-                        break;
-                    case 3:Controllers.Product product = new Controllers.Product();
-                        product.ProductSelection();
-                        break;
-                    case 4:CartController cart = new CartController();
-                        cart.CartOperations();
-                        break;
-                    case 6:
-                        return;
-                    case 5: Invoice invoiceController = new Invoice();
+                    choice=DisplayOptions();
+                if (choice == -1) continue;
+                   
+                    switch (choice)
+                    {
+                        case 1:
+                            Customer customer = new Customer();
+                            customer.CustomerController();
+                            break;
+                        case 2:
+                            Category categoryController = new Category();
+                            categoryController.CustomerController();
+                            break;
+                        case 3:
+                            Controllers.Product product = new Controllers.Product();
+                            product.ProductSelection();
+                            break;
+                        case 4:
+                            Cart cart = new Cart();
+                            cart.CartOperations();
+                            break;
+                    case 5:
+                        Invoice invoiceController = new Invoice();
                         invoiceController.InvoiceGeneration();
                         break;
-                    default:
-                        DisplayMessage.DisplayErrorMessage("Invlaid choice. Enter correct choice!!!");
-                        break;
-                }
+                    case 6:
+                            return;
+                        default:
+                            DisplayMessage.DisplayErrorMessage("Invalid choice. Enter correct choice!!!");
+                            break;
+                    }
 
-            } while (choice != 6);
+                } while (choice != 6);
         }
     }
 }
