@@ -10,7 +10,7 @@ namespace InvoiceManagementSystem.Repositories
 {
     public class Product:IProduct
     {
-        public void AddProducts(string productName, string productDescription, int productPrice, double productDiscount, float productTax, string categoryID)
+        public void AddProducts(string productName, string productDescription, int productPrice, float productDiscount, float productTax, string categoryID)
         {
             Models.Product Product = new Models.Product(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
             DBEntity.ProductList.Add(Product);
@@ -33,7 +33,7 @@ namespace InvoiceManagementSystem.Repositories
             }
 
         }
-        public void EditProductDetails(Models.Product Product,string productName, string productDescription, int productPrice, double productDiscount, float productTax)
+        public void EditProductDetails(Models.Product Product,string productName, string productDescription, int productPrice, float productDiscount, float productTax)
         {
             Product.ProductName = productName;
             Product.ProductDescription = productDescription;

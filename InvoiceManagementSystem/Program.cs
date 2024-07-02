@@ -38,13 +38,13 @@ namespace InvoiceManagementSystem
                     case 3:Controllers.Product product = new Controllers.Product();
                         product.ProductSelection();
                         break;
-                    case 4:Cart cart = new Cart();
+                    case 4:CartController cart = new CartController();
                         cart.CartOperations();
                         break;
                     case 6:
                         return;
-                    case 5: Repositories.Invoice invoice = new Repositories.Invoice();
-                            invoice.PrintInvoice();
+                    case 5: Invoice invoiceController = new Invoice();
+                        invoiceController.InvoiceGeneration();
                         break;
                     default:
                         DisplayMessage.DisplayErrorMessage("Invlaid choice. Enter correct choice!!!");
