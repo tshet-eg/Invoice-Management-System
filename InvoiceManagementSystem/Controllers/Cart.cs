@@ -52,8 +52,14 @@ namespace InvoiceManagementSystem.Controllers
                                 DisplayMessage.DisplayErrorMessage("Quantity needs to greater than 0");
                                 break;
                             }
-                            cart.AddtoCart(customerId, productId, quantity); //function to add items to cart
-                            DisplayMessage.DisplaySuccessMessage("Successfull added to cart");
+                            cartId=cart.AddtoCart(customerId, productId, quantity); //function to add items to cart
+                            if (cartId != null)
+                            {
+                                DisplayMessage.DisplaySuccessMessage("Successfull added to cart");
+                                DisplayMessage.DisplaySuccessMessage($"Your cart ID is {cartId}");
+                            }
+                            else
+                                DisplayMessage.DisplayErrorMessage("Internal error");
                         }
                         catch (FormatException)
                         {
