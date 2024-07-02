@@ -30,6 +30,10 @@ namespace InvoiceManagementSystem
                         Customer customer = new Customer();
                         customer.CustomerController();
                         break;
+                    case 2:
+                        Category categoryController = new Category();
+                        categoryController.CustomerController();
+                        break;
                     case 4:Cart cart = new Cart();
                         cart.CartOperations();
                         break;
