@@ -8,10 +8,10 @@ namespace InvoiceManagementSystem.Models
         public string ProductName;
         public string ProductDescription;
         public int ProductPrice;
-        public double ProductDiscount;
+        public float ProductDiscount;
         public string CategoryID;
         public float ProductTax;
-        public Product(string productName, string productDescription, int productPrice, double productDiscount, float productTax, string categoryID) {
+        public Product(string productName, string productDescription, int productPrice, float productDiscount, float productTax, string categoryID) {
             ProductID = "PROD" + ProductId;
             ProductName = productName;
             ProductDescription = productDescription;

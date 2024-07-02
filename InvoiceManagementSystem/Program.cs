@@ -1,5 +1,6 @@
 ﻿using InvoiceManagementSystem.Controllers;
 using System;
+using InvoiceManagementSystem.Controllers;
 
 namespace InvoiceManagementSystem
 {
@@ -52,7 +53,11 @@ namespace InvoiceManagementSystem
                             Cart cart = new Cart();
                             cart.CartOperations();
                             break;
-                        case 6:
+                    case 5:
+                        Invoice invoiceController = new Invoice();
+                        invoiceController.InvoiceGeneration();
+                        break;
+                    case 6:
                             return;
                         default:
                             DisplayMessage.DisplayErrorMessage("Invalid choice. Enter correct choice!!!");

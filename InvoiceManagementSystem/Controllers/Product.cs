@@ -50,8 +50,8 @@ namespace InvoiceManagementSystem.Controllers
                                 float ProductTax = float.Parse(Console.ReadLine());
                                 Console.Write("Enter the Product discount: ");
                                 double discount = Convert.ToDouble(Console.ReadLine());
-                                double ProductDiscount = discount / 100;
-                                Console.Write("Enter the Category ID: ");
+                                float ProductDiscount =(float) discount / 100;
+                                Console.WriteLine("Enter the Category ID");
                                 string productCategoryiD = Console.ReadLine();
 
                                 if (Validations.Category.CheckAvailability(productCategoryiD))

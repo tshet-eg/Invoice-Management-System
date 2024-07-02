@@ -2,6 +2,6 @@
 {
     internal interface ITax
     {
-        void ApplyTax();
+        float ApplyTax(float amount, float taxRate);
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Cart
+    public class CartController
     {
         public void CartOperations()
         {
