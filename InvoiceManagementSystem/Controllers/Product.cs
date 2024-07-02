@@ -61,7 +61,7 @@ namespace InvoiceManagementSystem.Controllers
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Category ID is not valid");
+                                    Console.WriteLine("Invalid Category ID");
                                     break;
                                 }
                                   
