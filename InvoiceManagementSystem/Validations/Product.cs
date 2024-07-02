@@ -16,6 +16,7 @@ namespace InvoiceManagementSystem.Validations
                 if (item.ProductID == productID)
                 {
                     result=true;
+                    break;
                 }
                 else
                 {
