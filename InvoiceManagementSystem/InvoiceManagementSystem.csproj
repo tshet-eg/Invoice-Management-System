@@ -46,6 +46,7 @@
     <Compile Include="Controllers\Cart.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Database\DBEntity.cs" />
+    <Compile Include="Controllers\Product.cs" />
     <Compile Include="IDGenerator\BaseEntity.cs" />
     <Compile Include="Interfaces\ICart.cs" />
     <Compile Include="Interfaces\ICategory.cs" />
@@ -64,8 +65,11 @@
     <Compile Include="Repositories\Cart.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Services\Cart.cs" />
+    <Compile Include="Repositories\Product.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Validations\Customer.cs" />
+    <Compile Include="Services\Product.cs" />
+    <Compile Include="Validations\Product.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
