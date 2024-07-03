@@ -29,9 +29,7 @@ namespace InvoiceManagementSystem.Controllers
                 var ProductRepoObject = new Repositories.ProductRepository();
                 var ProductObject = new Models.Product();
                 try
-                {
-
-
+                { }
                     if (int.TryParse(Console.ReadLine(), out option))
                     {
                         switch (option)
