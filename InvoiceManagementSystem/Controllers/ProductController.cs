@@ -53,7 +53,7 @@ namespace InvoiceManagementSystem.Controllers
                                 Console.WriteLine("Enter the Category ID");
                                 string productCategoryiD = Console.ReadLine();
 
-                                if (Category.CheckAvailability(productCategoryiD))
+                                if (CategoryValidation.CheckAvailability(productCategoryiD))
                                 {
                                     var AddProduct = new Services.ProductService(ProductRepoObject);
                                     AddProduct.AddProductsService(ProductName, ProductDescription, ProductPrice, ProductDiscount, ProductTax, productCategoryiD);
