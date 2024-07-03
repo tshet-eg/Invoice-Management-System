@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using InvoiceManagementSystem.Database;
-using InvoiceManagementSystem.Models;
 using InvoiceManagementSystem.Validations;
 
 
@@ -54,7 +53,7 @@ namespace InvoiceManagementSystem.Controllers
                                 Console.WriteLine("Enter the Category ID");
                                 string productCategoryiD = Console.ReadLine();
 
-                                if (Validations.Category.CheckAvailability(productCategoryiD))
+                                if (CategoryValidation.CheckAvailability(productCategoryiD))
                                 {
                                     var AddProduct = new Services.ProductService(ProductRepoObject);
                                     AddProduct.AddProductsService(ProductName, ProductDescription, ProductPrice, ProductDiscount, ProductTax, productCategoryiD);
@@ -64,10 +63,6 @@ namespace InvoiceManagementSystem.Controllers
                                     Console.WriteLine("Invalid Category ID");
                                     break;
                                 }
-                                  
-                                
-                                
-
                                 break;
                             case 2:
                                 Console.Write("Enter the product ID to delete: ");
@@ -81,10 +76,6 @@ namespace InvoiceManagementSystem.Controllers
                                 {
                                     Console.WriteLine("Entered ProductID is not valid");
                                 }
-
-
-
-
                                 break;
                             case 3:
                                 Console.Write("Enter the Product ID to update: ");

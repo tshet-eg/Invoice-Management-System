@@ -1,15 +1,18 @@
 ﻿using InvoiceManagementSystem.Interfaces;
+using InvoiceManagementSystem.Models;
+using InvoiceManagementSystem.Validations;
 
 namespace InvoiceManagementSystem.Services
 {
-    public class CustomerService
+    public class CustomersService
     {
         public ICustomer _iCustomer;
-        public CustomerService(ICustomer customer)
+        //constructor injection to hide repository operations
+        public CustomersService(ICustomer customer)
         {
             _iCustomer = customer;
         }
-        public string CreateCustomer(Models.Customer customer)
+        public string CreateCustomer(Customer customer)
         {
             string customerId = _iCustomer.CreateCustomer(customer);
             return customerId;
@@ -20,14 +23,14 @@ namespace InvoiceManagementSystem.Services
         }
         public bool DeleteCustomer(string CustomerID)
         {
-            bool isCustomer = Validations.Customer.CheckCustomer(CustomerID);
+            bool isCustomer = CustomerValidation.CheckCustomer(CustomerID);
             if (isCustomer)
             {
                 _iCustomer.DeleteCustomer(CustomerID);
             }
             return isCustomer;
         }
-        public Models.Customer GetCustomer(string CustomerID)
+        public Customer GetCustomer(string CustomerID)
         {
             return _iCustomer.GetCustomer(CustomerID);
         }
