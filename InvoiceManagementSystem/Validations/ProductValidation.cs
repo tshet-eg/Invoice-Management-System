@@ -11,12 +11,10 @@ namespace InvoiceManagementSystem.Validations
             {
                 //Comparing product ID of recieved one and already existing ones 
                 if (item.ProductID == productID)
-                {
                     return true;
-                }
             }
             return false;
-            
+
         }
     }
 }
