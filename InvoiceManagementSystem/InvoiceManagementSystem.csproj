@@ -78,7 +78,7 @@
     <Compile Include="Validations\CustomerValidation.cs" />
     <Compile Include="Services\InvoiceService.cs" />
     <Compile Include="Services\ProductService.cs" />
-    <Compile Include="Validations\Product.cs" />
+    <Compile Include="Validations\ProductValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
