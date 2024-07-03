@@ -24,14 +24,20 @@ namespace InvoiceManagementSystem.Controllers
                 Console.WriteLine("6. Edit a cart item");
                 Console.WriteLine("7. BACK");
                 Console.Write("Enter your choice: ");
-                choice = int.Parse(Console.ReadLine());
-
+                try
+                {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException) {
+                    DisplayMessage.DisplayErrorMessage("Number is required for choice");
+                    continue;
+                }
                 switch (choice)
                 {
                     case 1:
                         Console.Write("Enter customerId: ");
                         customerId = Console.ReadLine();
-                        if (!Validations.Customer.CheckCustomer(customerId))
+                        if (!Customer.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
@@ -68,7 +74,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 3:
                         Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
-                        if (!Validations.Customer.CheckCustomer(customerId))
+                        if (!Customer.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
@@ -79,7 +85,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 4:
                         Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
-                        if (!Validations.Customer.CheckCustomer(customerId))
+                        if (!Customer.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
@@ -96,7 +102,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 5:
                         Console.Write("Enter the cart ID: ");
                         cartId = Console.ReadLine();
-                        if (!Validations.Cart.VerifyCartId(cartId))
+                        if (!CartValidation.VerifyCartId(cartId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Cart Id");
                             break;
@@ -107,7 +113,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 6:
                         Console.Write("Enter the cart ID: ");
                         cartId = Console.ReadLine();
-                        if (!Validations.Cart.VerifyCartId(cartId))
+                        if (!CartValidation.VerifyCartId(cartId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Cart Id");
                             break;
@@ -134,9 +140,7 @@ namespace InvoiceManagementSystem.Controllers
         public static void DisplayCartItems(List<Models.Cart> cartItems)
         {
             if (cartItems.Count == 0)
-            {
                 Console.WriteLine("\n\n      Cart is empty\n");
-            }
             else
             {
                 Console.WriteLine("\n\n      Cart Items \n");

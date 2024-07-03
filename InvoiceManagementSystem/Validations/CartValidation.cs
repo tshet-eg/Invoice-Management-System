@@ -2,7 +2,7 @@
 
 namespace InvoiceManagementSystem.Validations
 {
-    public class Cart
+    public class CartValidation
     {
         public static bool VerifyCartId(string cartId)
         {
