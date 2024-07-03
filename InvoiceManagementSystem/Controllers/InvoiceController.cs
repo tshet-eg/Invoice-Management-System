@@ -16,7 +16,7 @@ namespace InvoiceManagementSystem.Controllers
 
             Console.WriteLine("Enter the customer ID");
             customerID = Console.ReadLine();
-            if (!Validations.Customer.CheckCustomer(customerID))
+            if (!Validations.CustomerValidation.CheckCustomer(customerID))
             {
                 DisplayMessage.DisplayErrorMessage("Invlaid customer ID");
                 return;
