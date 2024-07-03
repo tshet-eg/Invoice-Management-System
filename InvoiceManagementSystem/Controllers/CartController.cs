@@ -1,4 +1,6 @@
 ﻿using InvoiceManagementSystem.Validations;
+using InvoiceManagementSystem.Services;
+using InvoiceManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +13,7 @@ namespace InvoiceManagementSystem.Controllers
             int choice;
             int quantity;
             string customerId, productId, cartId;
-            Services.CartService cart = new Services.CartService(new Repositories.CartRepository());
+            CartService cart = new CartService(new Repositories.CartRepository());
             do
             {
                 //showing the menu
@@ -67,7 +69,7 @@ namespace InvoiceManagementSystem.Controllers
                         }
                         break;
                     case 2:
-                        List<Models.Cart> cartItems = cart.DisplayAllCartData(); //retrievig  all the the items from the cart
+                        List<Cart> cartItems = cart.DisplayAllCartData(); //retrievig  all the the items from the cart
                         DisplayCartItems(cartItems);
                         Console.WriteLine();
                         break;
