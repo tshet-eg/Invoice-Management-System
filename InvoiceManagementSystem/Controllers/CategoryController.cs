@@ -1,4 +1,6 @@
 ﻿using InvoiceManagementSystem.Interfaces;
+using InvoiceManagementSystem.Models;
+using InvoiceManagementSystem.Services;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +15,7 @@ namespace InvoiceManagementSystem.Controllers
                 int choice;
                 string categoryId;
                 ICategory categoryRepository = new Repositories.CategoryRepository();
-                Services.CategoryService categoryService = new Services.CategoryService(categoryRepository);
+                CategoryService categoryService = new CategoryService(categoryRepository);
                 do
                 {
                     Console.WriteLine("\n----------------CATEGORY MENU----------------");
@@ -36,9 +38,9 @@ namespace InvoiceManagementSystem.Controllers
                                 string categoryDescriptipn = Console.ReadLine();
                                 Console.Write("Enter category tax: ");
                                 float tax = float.Parse(Console.ReadLine());
-                                Models.Category categoryModel = new Models.Category(categoryName, categoryDescriptipn, tax);
-                                categoryService.AddCategory(categoryModel);
-                                DisplayMessage.DisplaySuccessMessage("\nCategory added successfully!!");
+                                Category categoryModel = new Category(categoryName, categoryDescriptipn, tax);
+                                string categoryID = categoryService.AddCategory(categoryModel);  //Adds new category
+                                DisplayMessage.DisplaySuccessMessage($"\nCategory added successfully!! \nCategory ID is {categoryID}");
 
                             }
                             catch (Exception e)
@@ -46,18 +48,20 @@ namespace InvoiceManagementSystem.Controllers
                                 DisplayMessage.DisplayErrorMessage(e.Message);
                             }
                             break;
-                        case 2: 
+                        case 2:
                             try
                             {
                                 Console.Write("\nEnter the category ID to update: ");
                                 categoryId = Console.ReadLine();
-                                Models.Category updateCategory = categoryService.GetCategory(categoryId);
+                                Category updateCategory = categoryService.GetCategory(categoryId);  //Retrives category to update
                                 if (updateCategory == null)
                                 {
                                     DisplayMessage.DisplayErrorMessage("\nProvided category ID does not exist!!");
                                     break;
                                 }
                                 int editChoice;
+
+                                // Edits fields based on input
                                 do
                                 {
                                     Console.WriteLine("\nCategory ID: " + updateCategory.CategoryID);
@@ -74,19 +78,19 @@ namespace InvoiceManagementSystem.Controllers
                                         case 1:
                                             Console.Write("Enter new category name: ");
                                             string updatedName = Console.ReadLine();
-                                            categoryService.EditCategory(categoryId, updatedName, updateCategory.Description, updateCategory.Tax);
+                                            categoryService.EditCategory(categoryId, updatedName, updateCategory.Description, updateCategory.Tax);  //Edits category name
                                             DisplayMessage.DisplaySuccessMessage("\nCategory name updated successfully!!");
                                             break;
                                         case 2:
                                             Console.Write("\nEnter new category description: ");
                                             string updatedDescription = Console.ReadLine();
-                                            categoryService.EditCategory(categoryId, updateCategory.Name, updatedDescription, updateCategory.Tax);
+                                            categoryService.EditCategory(categoryId, updateCategory.Name, updatedDescription, updateCategory.Tax);  //Edits category description
                                             DisplayMessage.DisplaySuccessMessage("\nCategory description updated successfully!!");
                                             break;
                                         case 3:
                                             Console.Write("\nEnter new category tax: ");
                                             float updatedTax = float.Parse(Console.ReadLine());
-                                            categoryService.EditCategory(categoryId, updateCategory.Name, updateCategory.Description, updatedTax);
+                                            categoryService.EditCategory(categoryId, updateCategory.Name, updateCategory.Description, updatedTax);  //Edits category tax
                                             DisplayMessage.DisplaySuccessMessage("\nCategory tax updated successfully!!");
                                             break;
                                         case 4:
@@ -106,10 +110,10 @@ namespace InvoiceManagementSystem.Controllers
                         case 3:
                             try
                             {
-                                List<Models.Category> list = categoryService.DisplayCategory();
+                                List<Category> list = categoryService.DisplayCategory(); //Gets the category list to display
                                 if (list.Count > 0)
                                 {
-                                    foreach (Models.Category category in list)
+                                    foreach (Category category in list)
                                     {
                                         Console.WriteLine("\nCategory ID: " + category.CategoryID);
                                         Console.WriteLine("Name: " + category.Name);
@@ -133,7 +137,7 @@ namespace InvoiceManagementSystem.Controllers
                             {
                                 Console.Write("Enter the category ID to delete: ");
                                 categoryId = Console.ReadLine();
-                                bool isPresent = categoryService.DeleteCategory(categoryId);
+                                bool isPresent = categoryService.DeleteCategory(categoryId); //Deletes the category
                                 if (isPresent)
                                     DisplayMessage.DisplaySuccessMessage("\nCategory deleted!!");
                                 else
