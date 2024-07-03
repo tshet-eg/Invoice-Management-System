@@ -1,4 +1,5 @@
 ﻿using InvoiceManagementSystem.Interfaces;
+using InvoiceManagementSystem.Models;
 using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Services
@@ -21,12 +22,12 @@ namespace InvoiceManagementSystem.Services
             _cart.ClearCartItemsOfUser(customerId);
         }
 
-        public List<Models.Cart> DisplayCartItemsOfUser(string customerId)
+        public List<Cart> DisplayCartItemsOfUser(string customerId)
         {
             return _cart.DisplayCartItemsOfUser(customerId);
         }
 
-        public List<Models.Cart> DisplayAllCartData()
+        public List<Cart> DisplayAllCartData()
         {
             return _cart.DisplayAllCartItems();
         }

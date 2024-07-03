@@ -39,7 +39,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 1:
                         Console.Write("Enter customerId: ");
                         customerId = Console.ReadLine();
-                        if (!Customer.CheckCustomer(customerId))
+                        if (!CustomerValidation.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
@@ -76,18 +76,18 @@ namespace InvoiceManagementSystem.Controllers
                     case 3:
                         Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
-                        if (!Customer.CheckCustomer(customerId))
+                        if (!CustomerValidation.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
                         }
-                        List<Models.Cart> customerCartItems = cart.DisplayCartItemsOfUser(customerId); //retrieving all the cart items of customer
+                        List<Cart> customerCartItems = cart.DisplayCartItemsOfUser(customerId); //retrieving all the cart items of customer
                         DisplayCartItems(customerCartItems);
                         break;
                     case 4:
                         Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
-                        if (!Customer.CheckCustomer(customerId))
+                        if (!CustomerValidation.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
@@ -139,14 +139,14 @@ namespace InvoiceManagementSystem.Controllers
         }
 
         //displaying the cart items
-        public static void DisplayCartItems(List<Models.Cart> cartItems)
+        public static void DisplayCartItems(List<Cart> cartItems)
         {
             if (cartItems.Count == 0)
                 Console.WriteLine("\n\n      Cart is empty\n");
             else
             {
                 Console.WriteLine("\n\n      Cart Items \n");
-                foreach (Models.Cart cartItem in cartItems)
+                foreach (Cart cartItem in cartItems)
                 {
                     Console.WriteLine("Cart Id     : " + cartItem.CartID);
                     Console.WriteLine("Customer Id : " + cartItem.CustomerID);
