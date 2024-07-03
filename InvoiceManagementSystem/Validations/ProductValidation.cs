@@ -1,5 +1,4 @@
-﻿
-using InvoiceManagementSystem.Database;
+﻿using InvoiceManagementSystem.Database;
 
 namespace InvoiceManagementSystem.Validations
 {
