@@ -17,7 +17,7 @@ namespace InvoiceManagementSystem.Repositories
 
         
 
-        public void PrintInvoice(List<Models.Cart> cart)
+        public void PrintInvoice(List<Cart> cart)
         {
 
 
@@ -35,7 +35,7 @@ namespace InvoiceManagementSystem.Repositories
             Console.WriteLine($"            |------------------------------------------------------------------------|");
             Console.WriteLine($"            |Sl.no |   ProductName    |   Qty  | Price  |  Tax(%) | Discount | Total |");
             Console.WriteLine($"            |------------------------------------------------------------------------|");
-            foreach (Models.Cart product in cart)
+            foreach (Cart product in cart)
             {
                 Console.WriteLine("            |{0,-10}{1,-20}{2,-3} {3,7}{4,9}{5,10}{6,11} |", slNumber++, product.Product.ProductName, product.Quantity, product.Product.ProductPrice, product.Product.ProductTax, ApplyDiscount(product.Product.ProductPrice, product.Product.ProductDiscount, product.Quantity, false), CalculateAmount(product));
 
@@ -70,7 +70,7 @@ namespace InvoiceManagementSystem.Repositories
             return amount * taxRate;
         }
         //method caluclate amount an d also subtotal
-        public float CalculateAmount(Models.Cart product)
+        public float CalculateAmount(Cart product)
         {
             float amount = product.Quantity * product.Product.ProductPrice - ApplyDiscount(product.Product.ProductPrice, product.Product.ProductDiscount, product.Quantity, false);
             _subtotal += amount;
