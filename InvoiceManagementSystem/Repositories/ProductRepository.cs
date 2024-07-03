@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using InvoiceManagementSystem.Interfaces;
 using InvoiceManagementSystem.Database;
-using InvoiceManagementSystem.Controllers;
+using InvoiceManagementSystem.Models;
 
 namespace InvoiceManagementSystem.Repositories
 {
@@ -10,11 +10,8 @@ namespace InvoiceManagementSystem.Repositories
     {
         public void AddProducts(string productName, string productDescription, int productPrice, float productDiscount, float productTax, string categoryID)
         {
-            Models.Product Product = new Models.Product(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
+            Models.Product Product = new Product(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
             EntityCollection.ProductList.Add(Product);
-          
-
-
         }
 
         public void DeleteProducts(string productId)
@@ -31,7 +28,7 @@ namespace InvoiceManagementSystem.Repositories
             }
 
         }
-        public void EditProductDetails(Models.Product Product,string productName, string productDescription, int productPrice, float productDiscount, float productTax)
+        public void EditProductDetails(Product Product,string productName, string productDescription, int productPrice, float productDiscount, float productTax)
         {
             Product.ProductName = productName;
             Product.ProductDescription = productDescription;
@@ -42,7 +39,7 @@ namespace InvoiceManagementSystem.Repositories
         }
 
 
-        public List<Models.Product> DisplayProducts()
+        public List<Product> DisplayProducts()
         {
            return EntityCollection.ProductList;
         }
