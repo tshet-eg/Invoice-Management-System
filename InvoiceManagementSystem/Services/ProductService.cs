@@ -1,15 +1,15 @@
 ﻿using InvoiceManagementSystem.Interfaces;
-using InvoiceManagementSystem.Models;
 using System.Collections.Generic;
+using InvoiceManagementSystem.Repositories;
+using InvoiceManagementSystem.Models;
 namespace InvoiceManagementSystem.Services
 {
-
-
     public class ProductService
     {
         private readonly IProduct _product;
-        public ProductService(Repositories.ProductRepository ProductObject)
+        public ProductService(ProductRepository ProductObject)
         {
+            //Constructor injection is done 
             _product = ProductObject;
         }
        
@@ -21,11 +21,11 @@ namespace InvoiceManagementSystem.Services
         {
             _product.DeleteProducts(productId);
         }
-        public void EditProductDetailsService(Models.Product Product,string productName,string productDescription,int productPrice,float productDiscount,float productTax   )
+        public void EditProductDetailsService(Product Product,string productName,string productDescription,int productPrice,float productDiscount,float productTax   )
         {
             _product.EditProductDetails(Product,productName, productDescription, productPrice, productDiscount, productTax);
         }
-        public List<Models.Product> DisplayProductsService()
+        public List<Product> DisplayProductsService()
         {
             return _product.DisplayProducts();
         }

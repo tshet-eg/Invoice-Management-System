@@ -1,11 +1,13 @@
-﻿namespace InvoiceManagementSystem.Models
+﻿using InvoiceManagementSystem.Validations;
+
+namespace InvoiceManagementSystem.Models
 {
     public class Customer : BaseEntity
     {
-        public string CustomerID {  get; set; }
+        public string CustomerID { get; set; }
         public string CustomerName { get; set; }
         private string _customerEmail;
-        public string CustomerEmail 
+        public string CustomerEmail
         {
             get
             {
@@ -13,16 +15,17 @@
             }
             set
             {
-                if (Validations.Customer.ValidateEmail(value))
+                //ensures email is in corect format
+                if (CustomerValidation.ValidateEmail(value))
                 {
                     _customerEmail = value;
                 }
                 else
                     throw new System.Exception("Invalid Email-ID!!");
-            } 
+            }
         }
         private long _phoneNumber;
-        public long PhoneNumber 
+        public long PhoneNumber
         {
             get
             {
@@ -30,9 +33,10 @@
             }
             set
             {
-                if (Validations.Customer.ValidatePhone(value) && value.ToString().Length==10)
+                //ensures phone number is in correct format
+                if (CustomerValidation.ValidatePhone(value) && value.ToString().Length == 10)
                 {
-                    _phoneNumber = value;   
+                    _phoneNumber = value;
                 }
                 else
                     throw new System.Exception("Invalid Phone Number!!");
@@ -47,7 +51,7 @@
             CustomerEmail = emailID;
             PhoneNumber = phoneNumber;
             Address = address;
-            CustomerID= "CUST" + CustomerId;
+            CustomerID = "CUST" + CustomerId;
         }
     }
 }

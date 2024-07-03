@@ -1,9 +1,12 @@
 ﻿using InvoiceManagementSystem.Interfaces;
+using InvoiceManagementSystem.Models;
+using InvoiceManagementSystem.Repositories;
+using InvoiceManagementSystem.Services;
 using System;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class CustomerController
+    public class CustomersController
     {
         int choice;
         public void CustomerOperations()
@@ -11,8 +14,8 @@ namespace InvoiceManagementSystem.Controllers
             try
             {
                 string customerId;
-                ICustomer customerRepository = new Repositories.CustomerRepository();
-                Services.CustomerService customer = new Services.CustomerService(customerRepository);
+                ICustomer customerRepository = new CustomersRepository();
+                CustomersService customer = new CustomersService(customerRepository);
                 do
                 {
                     Console.WriteLine("\n----------------CUSTOMER MENU----------------");
@@ -28,13 +31,14 @@ namespace InvoiceManagementSystem.Controllers
                                 Console.Write("Enter your name: ");
                                 string CustomerName = Console.ReadLine();
                                 Console.Write("Enter you phone number: ");
+                                Console.Write("Enter you phone number: ");
                                 long PhoneNumber = long.Parse(Console.ReadLine());
                                 Console.Write("Enter your email ID: ");
                                 string CustomerEmail = Console.ReadLine();
                                 Console.Write("Enter your address: ");
                                 string Address = Console.ReadLine();
-                                Models.Customer customerType = new Models.Customer(CustomerName, PhoneNumber, CustomerEmail, Address);
-                                customerId = customer.CreateCustomer(customerType);
+                                Customer customerType = new Customer(CustomerName, PhoneNumber, CustomerEmail, Address);
+                                customerId = customer.CreateCustomer(customerType);//creates new customer
                                 DisplayMessage.DisplaySuccessMessage($"\nAccount created successfully!!\nYour account ID is: {customerId}");
                             }
                             catch (Exception e)
@@ -47,7 +51,7 @@ namespace InvoiceManagementSystem.Controllers
                             {
                                 Console.Write("Enter unique customer ID: ");
                                 customerId = Console.ReadLine();
-                                Models.Customer customerEntry = customer.GetCustomer(customerId);
+                                Customer customerEntry = customer.GetCustomer(customerId);//retrieves customer details of given customer ID
                                 if (customerEntry == null)
                                 {
                                     DisplayMessage.DisplayErrorMessage("Invalid customer ID!!!");
@@ -56,6 +60,7 @@ namespace InvoiceManagementSystem.Controllers
                                 else
                                 {
                                     int option;
+                                    //edits fileds based on user input
                                     do
                                     {
                                         Console.WriteLine("\nCustomer ID : " + customerEntry.CustomerID);
@@ -74,25 +79,25 @@ namespace InvoiceManagementSystem.Controllers
                                             case 1:
                                                 Console.Write("Enter name to update: ");
                                                 string customerName = Console.ReadLine();
-                                                customer.EditCustomerDetails(customerId, customerName, customerEntry.PhoneNumber, customerEntry.CustomerEmail, customerEntry.Address);
+                                                customer.EditCustomerDetails(customerId, customerName, customerEntry.PhoneNumber, customerEntry.CustomerEmail, customerEntry.Address);//updates customer name
                                                 DisplayMessage.DisplaySuccessMessage("\n Name updated successfully!!");
                                                 break;
                                             case 2:
                                                 Console.Write("Enter phone number to update: ");
                                                 long phoneNumber = long.Parse(Console.ReadLine());
-                                                customer.EditCustomerDetails(customerId, customerEntry.CustomerName, phoneNumber, customerEntry.CustomerEmail, customerEntry.Address);
+                                                customer.EditCustomerDetails(customerId, customerEntry.CustomerName, phoneNumber, customerEntry.CustomerEmail, customerEntry.Address);//updates customer phone number
                                                 DisplayMessage.DisplaySuccessMessage("\n Phone number updated successfully!!");
                                                 break;
                                             case 3:
                                                 Console.Write("Enter emailID to update: ");
                                                 string email = Console.ReadLine();
-                                                customer.EditCustomerDetails(customerId, customerEntry.CustomerName, customerEntry.PhoneNumber, email, customerEntry.Address);
+                                                customer.EditCustomerDetails(customerId, customerEntry.CustomerName, customerEntry.PhoneNumber, email, customerEntry.Address);//updates customer email id
                                                 DisplayMessage.DisplaySuccessMessage("\n Email ID updated successfully!!");
                                                 break;
                                             case 4:
                                                 Console.Write("Enter address to update: ");
                                                 string address = Console.ReadLine();
-                                                customer.EditCustomerDetails(customerId, customerEntry.CustomerName, customerEntry.PhoneNumber, customerEntry.CustomerEmail, address);
+                                                customer.EditCustomerDetails(customerId, customerEntry.CustomerName, customerEntry.PhoneNumber, customerEntry.CustomerEmail, address);//updates customer address
                                                 DisplayMessage.DisplaySuccessMessage("\n Address updated successfully!!");
                                                 break;
                                             case 5:
@@ -114,7 +119,7 @@ namespace InvoiceManagementSystem.Controllers
                             {
                                 Console.Write("Enter unique customer ID: ");
                                 customerId = Console.ReadLine();
-                                Models.Customer displayCustomer = customer.GetCustomer(customerId);
+                                Customer displayCustomer = customer.GetCustomer(customerId);//retrieves customer details
                                 if (displayCustomer == null)
                                 {
                                     DisplayMessage.DisplayErrorMessage("Invalid Customer ID!!!");
@@ -134,7 +139,7 @@ namespace InvoiceManagementSystem.Controllers
                         case 4:
                             Console.Write("Enter unique customer ID: ");
                             customerId = Console.ReadLine();
-                            bool isPresent = customer.DeleteCustomer(customerId);
+                            bool isPresent = customer.DeleteCustomer(customerId);//deletes customer account
                             if (!isPresent)
                             {
                                 DisplayMessage.DisplayErrorMessage("Invalid Customer ID!!!");

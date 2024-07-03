@@ -39,7 +39,7 @@ namespace InvoiceManagementSystem
                 switch (choice)
                 {
                     case 1:
-                        CustomerController customer = new CustomerController();
+                        CustomersController customer = new CustomersController();
                         customer.CustomerOperations();
                         break;
                     case 2:
