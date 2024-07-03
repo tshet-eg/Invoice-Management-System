@@ -1,4 +1,6 @@
 ﻿using InvoiceManagementSystem.Validations;
+using InvoiceManagementSystem.Services;
+using InvoiceManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +13,7 @@ namespace InvoiceManagementSystem.Controllers
             int choice;
             int quantity;
             string customerId, productId, cartId;
-            Services.CartService cart = new Services.CartService(new Repositories.CartRepository());
+            CartService cart = new CartService(new Repositories.CartRepository());
             do
             {
                 //showing the menu
@@ -67,7 +69,7 @@ namespace InvoiceManagementSystem.Controllers
                         }
                         break;
                     case 2:
-                        List<Models.Cart> cartItems = cart.DisplayAllCartData(); //retrievig  all the the items from the cart
+                        List<Cart> cartItems = cart.DisplayAllCartData(); //retrievig  all the the items from the cart
                         DisplayCartItems(cartItems);
                         Console.WriteLine();
                         break;
@@ -79,7 +81,7 @@ namespace InvoiceManagementSystem.Controllers
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
                         }
-                        List<Models.Cart> customerCartItems = cart.DisplayCartItemsOfUser(customerId); //retrieving all the cart items of customer
+                        List<Cart> customerCartItems = cart.DisplayCartItemsOfUser(customerId); //retrieving all the cart items of customer
                         DisplayCartItems(customerCartItems);
                         break;
                     case 4:
@@ -137,14 +139,14 @@ namespace InvoiceManagementSystem.Controllers
         }
 
         //displaying the cart items
-        public static void DisplayCartItems(List<Models.Cart> cartItems)
+        public static void DisplayCartItems(List<Cart> cartItems)
         {
             if (cartItems.Count == 0)
-                Console.WriteLine("\n\n      Cart is empty\n");
+                DisplayMessage.DisplayErrorMessage("Cart is empty");
             else
             {
                 Console.WriteLine("\n\n      Cart Items \n");
-                foreach (Models.Cart cartItem in cartItems)
+                foreach (Cart cartItem in cartItems)
                 {
                     Console.WriteLine("Cart Id     : " + cartItem.CartID);
                     Console.WriteLine("Customer Id : " + cartItem.CustomerID);

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using InvoiceManagementSystem.Models;
 namespace InvoiceManagementSystem.Interfaces
 {
     //methods of entire cart
@@ -17,6 +17,6 @@ namespace InvoiceManagementSystem.Interfaces
         void EditCartItem(string cartId, int newQuantity);
         void DeleteCartItem(string cartId);
         void ClearCartItemsOfUser(string customerId);
-        List<Models.Cart> DisplayCartItemsOfUser(string customerId);
+        List<Cart> DisplayCartItemsOfUser(string customerId);
     }
 }
