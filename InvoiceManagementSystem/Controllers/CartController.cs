@@ -142,7 +142,7 @@ namespace InvoiceManagementSystem.Controllers
         public static void DisplayCartItems(List<Cart> cartItems)
         {
             if (cartItems.Count == 0)
-                Console.WriteLine("\n\n      Cart is empty\n");
+                DisplayMessage.DisplayErrorMessage("Cart is empty");
             else
             {
                 Console.WriteLine("\n\n      Cart Items \n");
