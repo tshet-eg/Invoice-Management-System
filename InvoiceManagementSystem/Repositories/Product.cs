@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using InvoiceManagementSystem.Interfaces;
-using InvoiceManagementSystem.Models;
 using InvoiceManagementSystem.Database;
-
 
 namespace InvoiceManagementSystem.Repositories
 {

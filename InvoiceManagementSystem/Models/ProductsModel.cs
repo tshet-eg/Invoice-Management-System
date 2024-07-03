@@ -1,5 +1,4 @@
-﻿using InvoiceManagementSystem.Models;
-namespace InvoiceManagementSystem.Models
+﻿namespace InvoiceManagementSystem.Models
 {
     public class ProductsModel:BaseEntity
     {
