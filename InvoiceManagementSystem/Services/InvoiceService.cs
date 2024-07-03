@@ -1,4 +1,5 @@
 ﻿using InvoiceManagementSystem.Interfaces;
+using InvoiceManagementSystem.Models;
 using System.Collections.Generic;
 namespace InvoiceManagementSystem.Services
 {
@@ -9,7 +10,7 @@ namespace InvoiceManagementSystem.Services
         {
             _invoice = invoice;
         }
-        public void PrintInvoiceService(List<Models.Cart> cart)
+        public void PrintInvoiceService(List<Cart> cart)
         {
             _invoice.PrintInvoice(cart);
         }

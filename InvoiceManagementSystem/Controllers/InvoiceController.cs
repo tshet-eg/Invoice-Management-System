@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using InvoiceManagementSystem.Validations;
 namespace InvoiceManagementSystem.Controllers
 {
     public class InvoiceController
@@ -10,13 +10,13 @@ namespace InvoiceManagementSystem.Controllers
         public void InvoiceGeneration()
         {
             string customerID;
-            Services.CartService cartService = new Services.CartService(new Repositories.CartRepository());
-            IInvoice invoiceRepository = new Repositories.InvoiceRepository();
-            Services.InvoiceService invoiceService = new Services.InvoiceService(invoiceRepository);
+            CartService cartService = new CartService(new CartRepository());
+            IInvoice invoiceRepository = new InvoiceRepository();
+            InvoiceService invoiceService = new InvoiceService(invoiceRepository);
 
             Console.WriteLine("Enter the customer ID");
             customerID = Console.ReadLine();
-            if (!Validations.CustomerValidation.CheckCustomer(customerID))
+            if (!CustomerValidation.CheckCustomer(customerID))
             {
                 DisplayMessage.DisplayErrorMessage("Invlaid customer ID");
                 return;
