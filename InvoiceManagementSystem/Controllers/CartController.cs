@@ -37,7 +37,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 1:
                         Console.Write("Enter customerId: ");
                         customerId = Console.ReadLine();
-                        if (!Customer.CheckCustomer(customerId))
+                        if (!CustomerValidation.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
@@ -74,7 +74,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 3:
                         Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
-                        if (!Customer.CheckCustomer(customerId))
+                        if (!CustomerValidation.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;
@@ -85,7 +85,7 @@ namespace InvoiceManagementSystem.Controllers
                     case 4:
                         Console.Write("Enter customer ID: ");
                         customerId = Console.ReadLine();
-                        if (!Customer.CheckCustomer(customerId))
+                        if (!CustomerValidation.CheckCustomer(customerId))
                         {
                             DisplayMessage.DisplayErrorMessage("Invalid Customer ID");
                             break;

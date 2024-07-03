@@ -12,7 +12,7 @@ namespace InvoiceManagementSystem.Repositories
         {
             Models.Product Product = new Models.Product(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
             EntityCollection.ProductList.Add(Product);
-            DisplayMessage.DisplaySuccessMessage("Product added Successfully!!");
+          
 
 
         }
@@ -25,7 +25,6 @@ namespace InvoiceManagementSystem.Repositories
                 if (Product.ProductID==productId)
                 {
                     EntityCollection.ProductList.Remove(Product);
-                    DisplayMessage.DisplaySuccessMessage("Product Deleted Successfully");
                     break;
                 }
                
