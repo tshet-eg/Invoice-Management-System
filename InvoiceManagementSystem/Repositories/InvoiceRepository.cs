@@ -13,7 +13,7 @@ namespace InvoiceManagementSystem.Repositories
         private float _subtotal;
 
         readonly StoreDetails storeDetails = new StoreDetails();
-         Models.Customer customer;
+         Customer customer;
 
         
 
@@ -76,9 +76,9 @@ namespace InvoiceManagementSystem.Repositories
             _subtotal += amount;
             return amount;
         }
-        Models.Customer fetchcustomer(string customerID)
+        Customer fetchcustomer(string customerID)
         {
-            foreach (Models.Customer customer in EntityCollection.CustomerList)
+            foreach (Customer customer in EntityCollection.CustomerList)
             {
                 if (customer.CustomerID == customerID)
                     return customer;
