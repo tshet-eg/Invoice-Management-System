@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using InvoiceManagementSystem.Interfaces;
 using InvoiceManagementSystem.Database;
+using InvoiceManagementSystem.Controllers;
 
 namespace InvoiceManagementSystem.Repositories
 {
@@ -11,6 +12,7 @@ namespace InvoiceManagementSystem.Repositories
         {
             Models.Product Product = new Models.Product(productName, productDescription, productPrice, productDiscount, productTax, categoryID);
             EntityCollection.ProductList.Add(Product);
+            DisplayMessage.DisplaySuccessMessage("Product added Successfully!!");
 
 
         }
@@ -23,7 +25,7 @@ namespace InvoiceManagementSystem.Repositories
                 if (Product.ProductID==productId)
                 {
                     EntityCollection.ProductList.Remove(Product);
-                    Console.WriteLine("Deleted successfully");
+                    DisplayMessage.DisplaySuccessMessage("Product Deleted Successfully");
                     break;
                 }
                

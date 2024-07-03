@@ -9,6 +9,7 @@ namespace InvoiceManagementSystem.Services
         private readonly IProduct _product;
         public ProductService(Repositories.ProductRepository ProductObject)
         {
+            //Constructor injection is done 
             _product = ProductObject;
         }
        
