@@ -6,7 +6,7 @@ namespace InvoiceManagementSystem.Validations
     {
         public static bool CheckAvailability(string categoryId)
         {
-            foreach (Models.Category category in DBEntity.CategoryList)
+            foreach (Models.Category category in EntityCollection.CategoryList)
             {
                 if (category.CategoryID == categoryId)
                     return true;

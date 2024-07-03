@@ -1,9 +1,11 @@
-﻿namespace InvoiceManagementSystem.Interfaces
+﻿using System.Collections.Generic;
+
+namespace InvoiceManagementSystem.Interfaces
 {
-    internal interface IInvoice
+    public interface IInvoice
     {
-        void CalculateTotal();
-        void PrintInvoice();
+        float CalculateTotal(float subtotal);
+        void PrintInvoice(List<Models.Cart> cart);
 
     }
 }

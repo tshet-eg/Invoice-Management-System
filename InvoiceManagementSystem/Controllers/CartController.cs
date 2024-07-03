@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Cart
+    public class CartController
     {
         public void CartOperations()
         {
             int choice;
             int quantity;
             string customerId, productId, cartId;
-            Services.Cart cart = new Services.Cart(new Repositories.Cart());
+            Services.CartService cart = new Services.CartService(new Repositories.CartRepository());
             do
             {
                 //showing the menu
@@ -53,8 +53,8 @@ namespace InvoiceManagementSystem.Controllers
                                 break;
                             }
                             cart.AddtoCart(customerId, productId, quantity); //function to add items to cart
-                            DisplayMessage.DisplaySuccessMessage("Successfull added to cart");
-                        }
+                               DisplayMessage.DisplaySuccessMessage("Successfull added to cart");
+                            }
                         catch (FormatException)
                         {
                             DisplayMessage.DisplayErrorMessage("Number is required");

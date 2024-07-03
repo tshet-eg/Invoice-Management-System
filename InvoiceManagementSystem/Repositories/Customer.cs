@@ -3,16 +3,16 @@ using InvoiceManagementSystem.Interfaces;
 
 namespace InvoiceManagementSystem.Repositories
 {
-    public class Customer : ICustomer
+    public class CustomerRepository : ICustomer
     {
         public string CreateCustomer(Models.Customer customer)
         {
-            DBEntity.CustomerList.Add(customer);
+            EntityCollection.CustomerList.Add(customer);
             return customer.CustomerID;
         }
         public void EditCustomerDetails(string CustomerID, string name, long phone, string email, string address)
         {
-            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
+            foreach (Models.Customer customerEntry in EntityCollection.CustomerList)
             {
                 if (customerEntry.CustomerID == CustomerID)
                 {
@@ -26,11 +26,11 @@ namespace InvoiceManagementSystem.Repositories
         }
         public void DeleteCustomer(string CustomerID)
         {
-            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
+            foreach (Models.Customer customerEntry in EntityCollection.CustomerList)
             {
                 if (customerEntry.CustomerID == CustomerID)
                 {
-                    DBEntity.CustomerList.Remove(customerEntry);
+                    EntityCollection.CustomerList.Remove(customerEntry);
                     break;
                 }
             }
@@ -38,7 +38,7 @@ namespace InvoiceManagementSystem.Repositories
         public Models.Customer GetCustomer(string CustomerID)
         {
             Models.Customer customer = null;
-            foreach (Models.Customer customerEntry in DBEntity.CustomerList)
+            foreach (Models.Customer customerEntry in EntityCollection.CustomerList)
             {
                 if (CustomerID == customerEntry.CustomerID)
                 {

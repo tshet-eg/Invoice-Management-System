@@ -3,13 +3,13 @@ using InvoiceManagementSystem.Interfaces;
 using System.Collections.Generic;
 namespace InvoiceManagementSystem.Repositories
 {
-    public class Cart : ICart
+    public class CartRepository : ICart
     {
         //method to add items to cart
         public void AddtoCart(string customerId, string productId, int quantity)
         {
             //if the product is already in the cart than incrementing the quantity value
-            foreach (Models.Cart cartItem in DBEntity.Cart)
+            foreach (Models.Cart cartItem in EntityCollection.Cart)
             {
                 if (cartItem.Product.ProductID == productId && cartItem.CustomerID == customerId)
                 {
@@ -18,12 +18,12 @@ namespace InvoiceManagementSystem.Repositories
                 }
             }
             //retrieving the product object and creating the cart object
-            foreach (Models.ProductsModel product in DBEntity.ProductList)
+            foreach (Models.Product product in EntityCollection.ProductList)
             {
                 if (product.ProductID == productId)
                 {
                     Models.Cart newCartItem = new Models.Cart(customerId, product, quantity);
-                    DBEntity.Cart.Add(newCartItem);
+                    EntityCollection.Cart.Add(newCartItem);
                 }
             }
         }
@@ -31,13 +31,13 @@ namespace InvoiceManagementSystem.Repositories
         //deleting the all the cart items of user
         public void ClearCartItemsOfUser(string customerId)
         {
-            DBEntity.Cart.RemoveAll(x => x.CustomerID == customerId);
+            EntityCollection.Cart.RemoveAll(x => x.CustomerID == customerId);
         }
 
         //deleting a sinlgle cart item of user
         public void DeleteCartItem(string cartId)
         {
-            DBEntity.Cart.RemoveAll(x => x.CartID == cartId);
+            EntityCollection.Cart.RemoveAll(x => x.CartID == cartId);
         }
 
 
@@ -45,7 +45,7 @@ namespace InvoiceManagementSystem.Repositories
         public List<Models.Cart> DisplayCartItemsOfUser(string customerId)
         {
             List<Models.Cart> cartItemList = new List<Models.Cart>();
-            foreach (Models.Cart cartItem in DBEntity.Cart)
+            foreach (Models.Cart cartItem in EntityCollection.Cart)
             {
                 if (cartItem.CustomerID == customerId)
                 {
@@ -58,13 +58,13 @@ namespace InvoiceManagementSystem.Repositories
         //displaying all the items present in the cart list
         public List<Models.Cart> DisplayAllCartItems()
         {
-            return DBEntity.Cart;
+            return EntityCollection.Cart;
         }
 
         //method to edit the cart item
         public void EditCartItem(string cartId, int newQuantity)
         {
-            foreach (Models.Cart item in DBEntity.Cart)
+            foreach (Models.Cart item in EntityCollection.Cart)
             {
                 if (item.CartID == cartId)
                 {

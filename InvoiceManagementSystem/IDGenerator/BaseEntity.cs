@@ -8,7 +8,7 @@ namespace InvoiceManagementSystem
         private static int _categoryId = 0;
         private static int _productId = 0;
         private static int _cartId = 0;
-        private string _uniqueId;
+        private int _invoiceId=11000;
 
         protected int CustomerId {
             get { return ++_customerId; }
@@ -22,10 +22,9 @@ namespace InvoiceManagementSystem
         protected int CartId {
             get { return ++_cartId; }
         }
-        protected string UniqueId {
-            get { 
-                Guid uniqueId = Guid.NewGuid();
-                return uniqueId.ToString();
+        protected int InvoiceID {
+            get {
+                return ++_invoiceId;
             }
         }
     }

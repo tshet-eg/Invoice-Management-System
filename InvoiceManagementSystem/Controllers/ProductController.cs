@@ -9,9 +9,9 @@ using InvoiceManagementSystem.Validations;
 
 namespace InvoiceManagementSystem.Controllers
 {
-    public class Product:BaseEntity
+    public class ProductController:BaseEntity
     {
-        public static void ProductSelection()
+        public void ProductSelection()
         {
             bool exit = false;
 
@@ -22,12 +22,12 @@ namespace InvoiceManagementSystem.Controllers
                 Console.WriteLine("2. Delete Product");
                 Console.WriteLine("3. Edit Product");
                 Console.WriteLine("4. Display Product");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Back");
                 Console.Write("Select an option: ");
 
                 int option;
-                var ProductRepoObject = new Repositories.Product();
-                var ProductObject = new Models.ProductsModel();
+                var ProductRepoObject = new Repositories.ProductRepository();
+                var ProductObject = new Models.Product();
                 try
                 {
 
@@ -39,23 +39,23 @@ namespace InvoiceManagementSystem.Controllers
                             case 1:
 
 
-                                Console.WriteLine("Enter the product name");
+                                Console.Write("Enter the product: ");
                                 string ProductName = Console.ReadLine();
-                                Console.WriteLine("Enter the product description");
+                                Console.Write("Enter the product description: ");
                                 string ProductDescription = Console.ReadLine();
-                                Console.WriteLine("Enter the product price");
+                                Console.Write("Enter the product price: ");
                                 int ProductPrice = Convert.ToInt32(Console.ReadLine());
-                                Console.WriteLine("Enter the Tax for the Product");
+                                Console.Write("Enter the Tax for the Product: ");
                                 float ProductTax = float.Parse(Console.ReadLine());
-                                Console.WriteLine("Enter the Product discount");
+                                Console.Write("Enter the Product discount: ");
                                 double discount = Convert.ToDouble(Console.ReadLine());
-                                double ProductDiscount = discount / 100;
+                                float ProductDiscount =(float) discount / 100;
                                 Console.WriteLine("Enter the Category ID");
                                 string productCategoryiD = Console.ReadLine();
 
                                 if (Validations.Category.CheckAvailability(productCategoryiD))
                                 {
-                                    var AddProduct = new Services.Product(ProductRepoObject);
+                                    var AddProduct = new Services.ProductService(ProductRepoObject);
                                     AddProduct.AddProductsService(ProductName, ProductDescription, ProductPrice, ProductDiscount, ProductTax, productCategoryiD);
                                 }
                                 else
@@ -69,11 +69,11 @@ namespace InvoiceManagementSystem.Controllers
 
                                 break;
                             case 2:
-                                Console.WriteLine("Enter the product ID to delete");
+                                Console.Write("Enter the product ID to delete: ");
                                 string productID = Console.ReadLine();
                                 if (ProductValidation.ProductIdValidation(productID))
                                 {
-                                    var DeleteProduct = new Services.Product(ProductRepoObject);
+                                    var DeleteProduct = new Services.ProductService(ProductRepoObject);
                                     DeleteProduct.DeleteProductsService(productID);
                                 }
                                 else
@@ -89,7 +89,7 @@ namespace InvoiceManagementSystem.Controllers
                                 Console.Write("Enter the Product ID to update: ");
                                 string productId = Console.ReadLine();
 
-                                foreach (var Product in DBEntity.ProductList)
+                                foreach (var Product in EntityCollection.ProductList)
                                 {
                                     if (Product.ProductID == productId)
                                     {
@@ -101,7 +101,7 @@ namespace InvoiceManagementSystem.Controllers
                                         Console.WriteLine("Tax" + Product.ProductTax);
                                         Console.WriteLine("Category ID: " + Product.CategoryID);
 
-                                        Console.WriteLine("\nSelect field to update: \n1. Name\n2. Description\n3. Price\n4. Discount\n5. Tax\n6. Exit");
+                                        Console.WriteLine("\nSelect field to update: \n1. Name\n2. Description\n3. Price\n4. Discount\n5. Tax\n6. Back");
                                         Console.Write("\nEnter your choice: ");
                                         int editChoice = Convert.ToInt32(Console.ReadLine());
                                         Console.WriteLine("\n");
@@ -111,21 +111,21 @@ namespace InvoiceManagementSystem.Controllers
                                                 Console.Write("Enter new Product name: ");
                                                 string productName = Console.ReadLine();
                                             
-                                                dynamic EditProductName = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductName = new Services.ProductService(ProductRepoObject);
                                                 EditProductName.EditProductDetailsService(Product,productName,Product.ProductDescription,Product.ProductPrice,Product.ProductDiscount,Product.ProductTax);
                                                 Console.Write("\nProduct name updated successfully!!");
                                                 break;
                                             case 2:
                                                 Console.Write("Enter new Product description: ");
                                                 dynamic productDescription = Console.ReadLine();
-                                                dynamic EditProductDescription = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductDescription = new Services.ProductService(ProductRepoObject);
                                                 EditProductDescription.EditProductDetailsService(Product,Product.ProductName,productDescription, Product.ProductPrice, Product.ProductDiscount, Product.ProductTax);
                                                 Console.Write("\nProduct description updated successfully!!");
                                                 break;
                                             case 3:
                                                 Console.Write("Enter new Product price: ");
                                                 dynamic productPrice = Convert.ToInt16(Console.ReadLine());
-                                                dynamic EditProductPrice = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductPrice = new Services.ProductService(ProductRepoObject);
                                                 EditProductPrice.EditProductDetailsService(Product, Product.ProductName, Product.ProductDescription, productPrice, Product.ProductDiscount, Product.ProductTax);
                                                 Console.Write("\nProduct tax updated successfully!!");
                                                 break;
@@ -134,14 +134,14 @@ namespace InvoiceManagementSystem.Controllers
                                                 double Pdiscount = Convert.ToDouble(Console.ReadLine());
                                                 double productDiscount = Pdiscount / 100;
 
-                                                dynamic EditProductDiscount = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductDiscount = new Services.ProductService(ProductRepoObject);
                                                 EditProductDiscount(Product, Product.ProductName, Product.ProductDescription, Product.ProductPrice, productDiscount, Product.ProductTax);
                                                 Console.Write("\nProduct tax updated successfully!!");
                                                 break;
                                             case 5:
                                                 Console.Write("Enter new Product Tax: ");
                                                 dynamic productTax = float.Parse(Console.ReadLine());
-                                                dynamic EditProductTax = new Services.Product(ProductRepoObject);
+                                                dynamic EditProductTax = new Services.ProductService(ProductRepoObject);
                                                 EditProductTax.EditProductDetailsService(Product, Product.ProductName, Product.ProductDescription, Product.ProductPrice, Product.ProductDiscount, productTax);
                                                 Console.Write("\nProduct tax updated successfully!!");
                                                 break;
@@ -158,23 +158,28 @@ namespace InvoiceManagementSystem.Controllers
 
                                 break;
                             case 4:
-                                var DisplayProduct = new Services.Product(ProductRepoObject);
-                                List<ProductsModel> result= DisplayProduct.DisplayProductsService();
+                                var DisplayProduct = new Services.ProductService(ProductRepoObject);
+                                List<Models.Product> result = DisplayProduct.DisplayProductsService();
+                                if(result.Count == 0)
+                                {
+                                    Console.WriteLine("Product List is Empty");
+                                    break;
+                                }
                                 foreach (var Product in result)
                                 {
-                                    Console.WriteLine($"ProductID: {Product.ProductID}");
-                                    Console.WriteLine($"Product Name: {Product.ProductName}");
-                                    Console.WriteLine($"Product Description: {Product.ProductDescription}");
-                                    Console.WriteLine($"Product Price: {Product.ProductPrice}");
-                                    Console.WriteLine($"Product Discount: {Product.ProductDiscount} ");
-                                    Console.WriteLine($"Product Tax:{Product.ProductTax}");
-                                    Console.WriteLine($"Product CategoryID: {Product.CategoryID}");
+                                    Console.Write($"ProductID          : {Product.ProductID}");
+                                    Console.Write($"Product Name       : {Product.ProductName}");
+                                    Console.Write($"Product Description: {Product.ProductDescription}");
+                                    Console.Write($"Product Price      : {Product.ProductPrice}");
+                                    Console.Write($"Product Discount   : {Product.ProductDiscount} ");
+                                    Console.Write($"Product Tax        :{Product.ProductTax}");
+                                    Console.Write($"Product CategoryID : {Product.CategoryID}");
 
                                 }
                                 break;
                             case 5:
                                 exit = true;
-                                Console.WriteLine("Exiting program...");
+                               
                                 break;
                             default:
                                 Console.WriteLine("Invalid option. Please try again.");

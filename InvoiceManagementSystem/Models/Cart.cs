@@ -4,10 +4,10 @@
     {
         public readonly string CartID;
         public string CustomerID { get; set; }
-        public ProductsModel Product { get; set; }
+        public Product Product { get; set; }
         public int Quantity { get; set; }
 
-        public Cart(string customerID, ProductsModel product, int quantity)
+        public Cart(string customerID, Product product, int quantity)
         {
             CartID = "CART" + CartId;
             CustomerID = customerID;
