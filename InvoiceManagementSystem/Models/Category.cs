@@ -2,18 +2,19 @@
 {
     public class Category : BaseEntity
     {
-        public string CategoryID{get; set;}
+        public string CategoryID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         private float _tax;
-        public float Tax 
+        public float Tax
         {
-            get 
-            { 
+            get
+            {
                 return _tax;
             }
             set
             {
+                //Ensures tax is not less than 0
                 if (value >= 0)
                 {
                     _tax = value;
@@ -23,7 +24,7 @@
             }
         }
 
-        public Category(string name, string description, float tax) 
+        public Category(string name, string description, float tax)
         {
             Name = name;
             Description = description;
