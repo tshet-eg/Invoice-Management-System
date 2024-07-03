@@ -72,7 +72,7 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Services\Customer.cs" />
     <Compile Include="Services\CategoryService.cs" />
-    <Compile Include="Validations\Cart.cs" />
+    <Compile Include="Validations\CartValidation.cs" />
     <Compile Include="Validations\CategoryValidation.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
     <Compile Include="Validations\Customer.cs" />

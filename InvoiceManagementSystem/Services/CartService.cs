@@ -5,7 +5,7 @@ namespace InvoiceManagementSystem.Services
 {
     public class CartService
     {
-        private ICart _cart;
+        private  ICart _cart;
         public CartService(ICart cart)
         {
             _cart = cart;
