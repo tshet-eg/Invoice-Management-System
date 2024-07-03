@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using InvoiceManagementSystem.Services;
-using InvoiceManagementSystem.Repositories;
 using InvoiceManagementSystem.Validations;
 namespace InvoiceManagementSystem.Controllers
 {
@@ -18,7 +16,7 @@ namespace InvoiceManagementSystem.Controllers
 
             Console.WriteLine("Enter the customer ID");
             customerID = Console.ReadLine();
-            if (!Customer.CheckCustomer(customerID))
+            if (!CustomerValidation.CheckCustomer(customerID))
             {
                 DisplayMessage.DisplayErrorMessage("Invlaid customer ID");
                 return;
